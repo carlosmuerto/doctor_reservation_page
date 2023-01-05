@@ -1,14 +1,9 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Greeting from './components/Greeting';
+import Home from './pages/Home';
 
 const App = () => (
-  <Router>
-    <Routes>
-      <Route path="/" exact element={<Greeting />} />
-    </Routes>
-  </Router>
+  <Home />
 );
 
 export default App;
