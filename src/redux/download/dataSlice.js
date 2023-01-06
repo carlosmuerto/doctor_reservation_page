@@ -34,7 +34,6 @@ export const dataSlice = createSlice({
   },
 });
 
-// export default greetingsSlice.reducer;
 const { action, reducer } = dataSlice;
 export { action, getMessage };
 export default reducer;
