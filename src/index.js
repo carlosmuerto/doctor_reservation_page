@@ -4,7 +4,7 @@ import './index.css';
 import { Provider } from 'react-redux';
 import App from './App';
 import store from './redux/configureStore';
-import { getMessage } from './redux/greetings/greetingsSlice';
+import { getMessage } from './redux/download/dataSlice';
 
 store.dispatch(getMessage());
 

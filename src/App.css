@@ -37,3 +37,12 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  border: 1px solid #000;
+}
+
+.img_container {
+  width: 50px;
+  border: 1px solid #000;
+}

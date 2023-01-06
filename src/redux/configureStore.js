@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import greetingsReducer from './greetings/greetingsSlice';
+import greetingsReducer from './download/dataSlice';
 
 const store = configureStore({
   reducer: {
-    greetings: greetingsReducer,
+    doctorsData: greetingsReducer,
   },
 });
 
