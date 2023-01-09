@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { getMessage } from '../../redux/download/dataSlice';
-// import Details from '../DetailsPage/Details';
 import ItemsList from './ItemObject';
 
 const MainPage = () => {
@@ -20,7 +19,7 @@ const MainPage = () => {
     <div className="container">
       <h1>Home page</h1>
 
-      <div>
+      <div className="container">
         <p>Temporal Navbar</p>
         <NavLink to="/ReservationPage"> Reservation Page </NavLink>
       </div>
