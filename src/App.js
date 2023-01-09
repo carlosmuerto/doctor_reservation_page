@@ -5,13 +5,15 @@ import MainPage from './components/HomePage/MainPage';
 import Details from './components/DetailsPage/Details';
 import Reservation from './components/ReservationPage/ReservationPage';
 import LoginPage from './components/Authentication/LoginPage';
+import RegistrionPage from './components/Authentication/RegistrionPage';
 
 const App = () => (
   <Router>
     <Routes>
       <Route path="/MainPage" exact element={<MainPage />} />
       <Route path="/Details" exact element={<Details />} />
-      <Route path="/" exact element={<LoginPage />} />
+      <Route path="/LoginPage" exact element={<LoginPage />} />
+      <Route path="/" exact element={<RegistrionPage />} />
       <Route path="/ReservationPage" exact element={<Reservation />} />
     </Routes>
   </Router>

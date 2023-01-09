@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
@@ -10,7 +8,9 @@ import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-// class LoginPage extends Component {
+// Cambiar función a arrow function
+// // https://react-hook-form.com/
+// class RegistrionPage extends Component {
 //   handleSubmit = (formValues) => {
 //     if (formValues.email === undefined || formValues.password === undefined) {
 //       alert('Please, put the information complete');
@@ -26,10 +26,15 @@ import { NavLink } from 'react-router-dom';
 
 //     return (
 //       <>
-//         <NavLink to="/MainPage"> Main Page </NavLink>
-//         <h1>Login Page!</h1>
+//         <NavLink to="/LoginPage"> Login Page </NavLink>
+//         <h1>Registrion Page!</h1>
 
 //         <form onSubmit={handleSubmit(this.handleSubmit)}>
+
+//           <div>
+//             <label>Name:</label>
+//             <Field name="name" type="text" component="input" />
+//           </div>
 
 //           <div>
 //             <label>Email:</label>
@@ -49,13 +54,11 @@ import { NavLink } from 'react-router-dom';
 //   }
 // }
 
-// LoginPage.propTypes = {
+// RegistrionPage.propTypes = {
 //   handleSubmit: PropTypes.bool,
 // }.isRequired;
 
-// export default reduxForm({ form: 'loginForm' })(LoginPage);
-
-// const input = ({ input, meta }) => (<input {...input} type="text" errorMessage={meta.error} />);
+// export default reduxForm({ form: 'RegistrionForm' })(RegistrionPage);
 
 const onSubmit = (values) => {
   alert(JSON.stringify(values));
@@ -69,12 +72,17 @@ const required = (values) => {
   return undefined;
 };
 
-const LoginPage = ({ handleSubmit, valid }) => (
+const RegistrionPage = ({ handleSubmit, valid }) => (
   <>
-    <NavLink to="/MainPage"> Main Page </NavLink>
-    <h1>Login Page!</h1>
+    <NavLink to="/LoginPage"> Login Page </NavLink>
+    <h1>Registrion Page!</h1>
 
     <form onSubmit={handleSubmit}>
+
+      <div>
+        {/* <label>Name:</label> */}
+        <Field name="name" type="text" component="input" validate={required} placeholder="Name:" />
+      </div>
 
       <div>
         {/* <label>Email:</label> */}
@@ -86,17 +94,17 @@ const LoginPage = ({ handleSubmit, valid }) => (
         <Field name="password" type="password" component="input" validate={required} placeholder="Password:" />
       </div>
 
-      <button disabled={!valid} type="submit">Login</button>
+      <button disabled={!valid} type="submit">Register</button>
 
     </form>
   </>
 );
 
-LoginPage.propTypes = {
+RegistrionPage.propTypes = {
   handleSubmit: PropTypes.bool,
 }.isRequired;
 
 export default reduxForm({
-  form: 'loginForm',
+  form: 'RegistrionForm',
   onSubmit,
-})(LoginPage);
+})(RegistrionPage);
