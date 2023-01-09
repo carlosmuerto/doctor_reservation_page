@@ -6,6 +6,7 @@ import Details from './components/DetailsPage/Details';
 import Reservation from './components/ReservationPage/ReservationPage';
 import LoginPage from './components/Authentication/LoginPage';
 import RegistrionPage from './components/Authentication/RegistrionPage';
+import SplashPage from './components/SplashPage/SplashPage';
 
 const App = () => (
   <Router>
@@ -13,8 +14,9 @@ const App = () => (
       <Route path="/MainPage" exact element={<MainPage />} />
       <Route path="/Details" exact element={<Details />} />
       <Route path="/LoginPage" exact element={<LoginPage />} />
-      <Route path="/" exact element={<RegistrionPage />} />
+      <Route path="/RegistrionPage" exact element={<RegistrionPage />} />
       <Route path="/ReservationPage" exact element={<Reservation />} />
+      <Route path="/" exact element={<SplashPage />} />
     </Routes>
   </Router>
 );

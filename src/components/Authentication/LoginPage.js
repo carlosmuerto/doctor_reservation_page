@@ -71,7 +71,9 @@ const required = (values) => {
 
 const LoginPage = ({ handleSubmit, valid }) => (
   <>
-    <NavLink to="/MainPage"> Main Page </NavLink>
+    <NavLink to="/MainPage" className="container"> Main Page </NavLink>
+    <NavLink to="/RegistrionPage" className="container"> Registrion Page </NavLink>
+
     <h1>Login Page!</h1>
 
     <form onSubmit={handleSubmit}>
