@@ -1,6 +1,10 @@
+import NavBar from '../NavBar/Navbar';
+
 function Reservation() {
   return (
-    <h1>Reservation Page</h1>
+    <>
+      <NavBar name="My Reservations" />
+    </>
   );
 }
 

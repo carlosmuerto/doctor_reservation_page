@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const ItemsList = (props) => {
+function ItemsList(props) {
   const { data } = props;
 
   return (
@@ -10,7 +10,7 @@ const ItemsList = (props) => {
       <img src={data.img} alt={data.name} className="img_container" />
     </>
   );
-};
+}
 
 ItemsList.propTypes = {
   data: PropTypes.shape({

@@ -1,12 +1,13 @@
 import '../../styles/App.css';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
-import ItemsList from './ItemObject';
+import { Link } from 'react-router-dom';
 import { getMessage } from '../../redux/Greeting/Greeting';
+import ItemsList from './ItemObject';
+// import TestingApp from '../../redux/download/signUpSlice';
+import NavBar from '../NavBar/Navbar';
 
-const MainPage = () => {
-  // eslint-disable-next-line no-unused-vars
+function MainPage() {
   const dispatch = useDispatch();
   const greetingShow = useSelector((store) => store.doctorsData);
 
@@ -17,13 +18,10 @@ const MainPage = () => {
   });
 
   return (
-    <div className="container">
-      <h1>Home page</h1>
+    <>
+      <NavBar name="Home Page" />
 
-      <div className="container">
-        <p>Temporal Navbar</p>
-        <NavLink to="/ReservationPage"> Reservation Page </NavLink>
-      </div>
+      {/* <TestingApp /> */}
 
       <ul>
 
@@ -41,8 +39,8 @@ const MainPage = () => {
 
       </ul>
 
-    </div>
+    </>
   );
-};
+}
 
 export default MainPage;
