@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
+import NavBar from '../NavBar/Navbar';
 
-const Details = () => {
+function Details() {
   const location = useLocation();
   const { state } = location;
 
@@ -12,7 +13,7 @@ const Details = () => {
 
   return (
     <>
-      <h1>Details Page</h1>
+      <NavBar name="Details Page" />
 
       <h4>{state.state.name}</h4>
       <h4>{state.state.address}</h4>
@@ -20,6 +21,6 @@ const Details = () => {
 
     </>
   );
-};
+}
 
 export default Details;

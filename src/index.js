@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import store from './redux/configureStore';
 import { getMessage } from './redux/download/dataSlice';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 store.dispatch(getMessage());
 

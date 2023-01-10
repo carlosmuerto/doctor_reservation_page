@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 
-import { reduxForm, Field } from 'redux-form';
+// import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
@@ -51,48 +51,32 @@ import { NavLink } from 'react-router-dom';
 
 // const input = ({ input, meta }) => (<input {...input} type="text" errorMessage={meta.error} />);
 
-const onSubmit = (values) => {
-  alert(JSON.stringify(values));
-};
+// const onSubmit = (values) => {
+//   alert(JSON.stringify(values));
+// };
 
-const required = (values) => {
-  if (!values || values === '') {
-    return 'This Field is required';
-  }
+// const required = (values) => {
+//   if (!values || values === '') {
+//     return 'This Field is required';
+//   }
 
-  return undefined;
-};
+//   return undefined;
+// };
 
-const LoginPage = ({ handleSubmit, valid }) => (
-  <>
-    <NavLink to="/MainPage" className="container"> Main Page </NavLink>
-    <NavLink to="/RegistrionPage" className="container"> Login Page </NavLink>
+function LoginPage() {
+  return (
+    <>
+      <NavLink to="/MainPage" className="container"> Main Page </NavLink>
+      <NavLink to="/RegistrionPage" className="container"> Login Page </NavLink>
 
-    <h1>Login Page!</h1>
+      <h1>Login Page!</h1>
 
-    <form onSubmit={handleSubmit}>
-
-      <div>
-        {/* <label>Email:</label> */}
-        <Field name="email" type="email" component="input" validate={required} placeholder="Email:" />
-      </div>
-
-      <div>
-        {/* <label>Password:</label> */}
-        <Field name="password" type="password" component="input" validate={required} placeholder="Password:" />
-      </div>
-
-      <button disabled={!valid} type="submit">Login</button>
-
-    </form>
-  </>
-);
+    </>
+  );
+}
 
 LoginPage.propTypes = {
   handleSubmit: PropTypes.bool,
 }.isRequired;
 
-export default reduxForm({
-  form: 'loginForm',
-  onSubmit,
-})(LoginPage);
+export default (LoginPage);

@@ -9,7 +9,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 // return answer;
 // ));
 
-const getMessage = createAsyncThunk('greetings/getGreetings',
+const getMessage = createAsyncThunk(
+  'greetings/getGreetings',
   async () => (
     [{
       name: 'Dr.Simi',
@@ -20,8 +21,29 @@ const getMessage = createAsyncThunk('greetings/getGreetings',
       name: 'Farmacias Del Ahorro',
       address: 'Vecindad Street',
       img: 'https://vozdelasempresas.org/wp-content/uploads/2020/11/FDahorro2Vozz.png',
+    },
+    {
+      name: 'Dr.Simi',
+      address: '123 street',
+      img: 'https://pbs.twimg.com/profile_images/1505546875918864385/FI4JAeRG_400x400.jpg',
+    },
+    {
+      name: 'Farmacias Del Ahorro',
+      address: 'Vecindad Street',
+      img: 'https://vozdelasempresas.org/wp-content/uploads/2020/11/FDahorro2Vozz.png',
+    },
+    {
+      name: 'Dr.Simi',
+      address: '123 street',
+      img: 'https://pbs.twimg.com/profile_images/1505546875918864385/FI4JAeRG_400x400.jpg',
+    },
+    {
+      name: 'Farmacias Del Ahorro',
+      address: 'Vecindad Street',
+      img: 'https://vozdelasempresas.org/wp-content/uploads/2020/11/FDahorro2Vozz.png',
     }]
-  ));
+  ),
+);
 
 const initialState = [];
 

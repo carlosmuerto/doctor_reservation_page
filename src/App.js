@@ -8,17 +8,19 @@ import LoginPage from './components/Authentication/LoginPage';
 import RegistrionPage from './components/Authentication/RegistrionPage';
 import SplashPage from './components/SplashPage/SplashPage';
 
-const App = () => (
-  <Router>
-    <Routes>
-      <Route path="/MainPage" exact element={<MainPage />} />
-      <Route path="/Details" exact element={<Details />} />
-      <Route path="/LoginPage" exact element={<LoginPage />} />
-      <Route path="/RegistrionPage" exact element={<RegistrionPage />} />
-      <Route path="/ReservationPage" exact element={<Reservation />} />
-      <Route path="/" exact element={<SplashPage />} />
-    </Routes>
-  </Router>
-);
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/MainPage" exact element={<MainPage />} />
+        <Route path="/Details" exact element={<Details />} />
+        <Route path="/LoginPage" exact element={<LoginPage />} />
+        <Route path="/RegistrionPage" exact element={<RegistrionPage />} />
+        <Route path="/ReservationPage" exact element={<Reservation />} />
+        <Route path="/" exact element={<SplashPage />} />
+      </Routes>
+    </Router>
+  );
+}
 
 export default App;
