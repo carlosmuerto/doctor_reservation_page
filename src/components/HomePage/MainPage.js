@@ -2,9 +2,8 @@ import '../../styles/App.css';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-// import { getMessage } from '../../redux/download/dataSlice';
 import ItemsList from './ItemObject';
-import TestingApp from '../../redux/download/signUpSlice';
+import { getMessage } from '../../redux/Greeting/Greeting';
 
 const MainPage = () => {
   // eslint-disable-next-line no-unused-vars
@@ -13,14 +12,13 @@ const MainPage = () => {
 
   useEffect(() => {
     if (!greetingShow.length) {
-      // dispatch(getMessage());
+      dispatch(getMessage());
     }
   });
 
   return (
     <div className="container">
       <h1>Home page</h1>
-      <TestingApp />
 
       <div className="container">
         <p>Temporal Navbar</p>
