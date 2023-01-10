@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import greetingsReducer from './download/dataSlice';
+import AuthReducer from './Auth/AuthSlice';
 
 const store = configureStore({
   reducer: {
-    doctorsData: greetingsReducer,
+    Auth: AuthReducer,
   },
 });
 

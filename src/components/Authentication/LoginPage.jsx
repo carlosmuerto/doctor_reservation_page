@@ -1,81 +1,46 @@
-/* eslint-disable import/extensions */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-
-// import React, { Component } from 'react';
 import { Formik, Field, Form } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-
-// class LoginPage extends Component {
-//   handleSubmit = (formValues) => {
-//     if (formValues.email === undefined || formValues.password === undefined) {
-//       alert('Please, put the information complete');
-//       console.log('Please, put the information complete');
-//     } else {
-//       console.log('Authorizathed');
-//       alert(`Welcome! Your email: ${formValues.email} was submitted`);
-//     }
-//   }
-
-//   render() {
-//     const { handleSubmit } = this.props;
-
-//     return (
-//       <>
-//         <NavLink to="/MainPage"> Main Page </NavLink>
-//         <h1>Login Page!</h1>
-
-//         <form onSubmit={handleSubmit(this.handleSubmit)}>
-
-//           <div>
-//             <label>Email:</label>
-//             <Field name="email" type="email" component="input" />
-//           </div>
-
-//           <div>
-//             <label>Password:</label>
-//             <Field name="password" type="password" component="input" />
-//           </div>
-
-//           <button type="submit">Login</button>
-
-//         </form>
-//       </>
-//     );
-//   }
-// }
-
-// LoginPage.propTypes = {
-//   handleSubmit: PropTypes.bool,
-// }.isRequired;
-
-// export default reduxForm({ form: 'loginForm' })(LoginPage);
-
-// const input = ({ input, meta }) => (<input {...input} type="text" errorMessage={meta.error} />);
+import * as AuthSlice from '../../redux/Auth/AuthSlice';
+import loadingStatus from '../../redux/reduxConst';
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((store) => store.Auth.user);
+  const loading = useSelector((store) => store.Auth.loading);
+
   const onSubmit = async (values) => {
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    const jsonBody = ({
-      User: values,
-    });
-    console.log(JSON.stringify(jsonBody, null, 2));
+    dispatch(
+      AuthSlice.logIn(values),
+    );
   };
 
-  const nitialValues = {
+  const logOutOnClick = async () => {
+    dispatch(
+      AuthSlice.logOut(user),
+    );
+  };
+
+  const initialValues = {
     email: '',
     password: '',
   };
 
   return (
     <div>
+      {
+        loading === loadingStatus.succeeded
+          ? `User: ${user.userName}`
+          : null
+      }
       <NavLink to="/MainPage" className="container"> Main Page </NavLink>
-      <NavLink to="/RegistrionPage" className="container"> Registrion Page </NavLink>
+      {
+        loading === loadingStatus.succeeded
+          ? <button type="button" onClick={logOutOnClick}>Log Out</button>
+          : <NavLink to="/RegistrionPage" className="container"> Registrion Page </NavLink>
+      }
       <Formik
-        initialValues={nitialValues}
+        initialValues={initialValues}
         onSubmit={onSubmit}
       >
         <Form>
@@ -84,7 +49,6 @@ const LoginPage = () => {
           <button type="submit">Submit</button>
         </Form>
       </Formik>
-
     </div>
   );
 };
