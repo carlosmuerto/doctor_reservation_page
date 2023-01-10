@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { getMessage } from '../../redux/download/dataSlice';
 import ItemsList from './ItemObject';
+import TestingApp from '../../redux/download/signUpSlice';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const MainPage = () => {
   return (
     <div className="container">
       <h1>Home page</h1>
+      <TestingApp />
 
       <div className="container">
         <p>Temporal Navbar</p>

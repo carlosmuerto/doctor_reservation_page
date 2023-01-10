@@ -1,11 +1,5 @@
-/* eslint-disable import/extensions */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable no-console */
 /* eslint-disable no-alert */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 
-// import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
@@ -72,7 +66,7 @@ const required = (values) => {
 const LoginPage = ({ handleSubmit, valid }) => (
   <>
     <NavLink to="/MainPage" className="container"> Main Page </NavLink>
-    <NavLink to="/RegistrionPage" className="container"> Registrion Page </NavLink>
+    <NavLink to="/RegistrionPage" className="container"> Login Page </NavLink>
 
     <h1>Login Page!</h1>
 
