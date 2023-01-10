@@ -6,8 +6,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 // import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
-import PropTypes from 'prop-types';
+import { Formik, Field, Form } from 'formik';
 import { NavLink } from 'react-router-dom';
 
 // class LoginPage extends Component {
@@ -57,48 +56,37 @@ import { NavLink } from 'react-router-dom';
 
 // const input = ({ input, meta }) => (<input {...input} type="text" errorMessage={meta.error} />);
 
-const onSubmit = (values) => {
-  alert(JSON.stringify(values));
+const LoginPage = () => {
+  const onSubmit = async (values) => {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    const jsonBody = ({
+      User: values,
+    });
+    console.log(JSON.stringify(jsonBody, null, 2));
+  };
+
+  const nitialValues = {
+    email: '',
+    password: '',
+  };
+
+  return (
+    <div>
+      <NavLink to="/MainPage" className="container"> Main Page </NavLink>
+      <NavLink to="/RegistrionPage" className="container"> Registrion Page </NavLink>
+      <Formik
+        initialValues={nitialValues}
+        onSubmit={onSubmit}
+      >
+        <Form>
+          <Field name="email" type="email" placeholder="eMail" />
+          <Field name="password" type="password" placeholder="Password" />
+          <button type="submit">Submit</button>
+        </Form>
+      </Formik>
+
+    </div>
+  );
 };
 
-const required = (values) => {
-  if (!values || values === '') {
-    return 'This Field is required';
-  }
-
-  return undefined;
-};
-
-const LoginPage = ({ handleSubmit, valid }) => (
-  <>
-    <NavLink to="/MainPage" className="container"> Main Page </NavLink>
-    <NavLink to="/RegistrionPage" className="container"> Registrion Page </NavLink>
-
-    <h1>Login Page!</h1>
-
-    <form onSubmit={handleSubmit}>
-
-      <div>
-        {/* <label>Email:</label> */}
-        <Field name="email" type="email" component="input" validate={required} placeholder="Email:" />
-      </div>
-
-      <div>
-        {/* <label>Password:</label> */}
-        <Field name="password" type="password" component="input" validate={required} placeholder="Password:" />
-      </div>
-
-      <button disabled={!valid} type="submit">Login</button>
-
-    </form>
-  </>
-);
-
-LoginPage.propTypes = {
-  handleSubmit: PropTypes.bool,
-}.isRequired;
-
-export default reduxForm({
-  form: 'loginForm',
-  onSubmit,
-})(LoginPage);
+export default LoginPage;
