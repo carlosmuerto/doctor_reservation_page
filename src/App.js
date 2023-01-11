@@ -7,6 +7,8 @@ import Reservation from './components/ReservationPage/ReservationPage';
 import LoginPage from './components/Authentication/LoginPage';
 import RegistrionPage from './components/Authentication/RegistrionPage';
 import SplashPage from './components/SplashPage/SplashPage';
+import AddItem from './components/DoctorsData/AddItem';
+import DeleteItem from './components/DoctorsData/DeleteItem';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/LoginPage" exact element={<LoginPage />} />
         <Route path="/RegistrionPage" exact element={<RegistrionPage />} />
         <Route path="/ReservationPage" exact element={<Reservation />} />
+        <Route path="/AddItem" exact element={<AddItem />} />
+        <Route path="/DeleteItem" exact element={<DeleteItem />} />
         <Route path="/" exact element={<SplashPage />} />
       </Routes>
     </Router>

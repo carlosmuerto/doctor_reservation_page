@@ -3,8 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getMessage } from '../../redux/Greeting/Greeting';
-import ItemsList from './ItemObject';
-// import TestingApp from '../../redux/download/signUpSlice';
+import ItemsList from '../DoctorsData/ItemObject';
 import NavBar from '../NavBar/Navbar';
 
 function MainPage() {
@@ -18,10 +17,8 @@ function MainPage() {
   });
 
   return (
-    <>
+    <section className="margin_top">
       <NavBar name="Home Page" />
-
-      {/* <TestingApp /> */}
 
       <ul>
 
@@ -39,7 +36,7 @@ function MainPage() {
 
       </ul>
 
-    </>
+    </section>
   );
 }
 

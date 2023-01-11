@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -24,7 +25,7 @@ const NavBar = (props) => {
 
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 
-            <Navbar.Brand href="#"><Link to="/MainPage">{name}</Link></Navbar.Brand>
+            <Navbar.Brand href="/MainPage">{name}</Navbar.Brand>
 
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -43,8 +44,8 @@ const NavBar = (props) => {
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="/ReservationPage">My Reservations</Nav.Link>
                   <Nav.Link href="#action2">Add Reservation</Nav.Link>
-                  <Nav.Link href="#action1">Add Item</Nav.Link>
-                  <Nav.Link href="#action2">Delete Item</Nav.Link>
+                  <Nav.Link href="/AddItem">Add Item</Nav.Link>
+                  <Nav.Link href="/DeleteItem">Delete Item</Nav.Link>
 
                   <NavDropdown
                     title="Options"

@@ -12,14 +12,14 @@ function Details() {
   }
 
   return (
-    <>
+    <section className="margin_top">
       <NavBar name="Details Page" />
 
       <h4>{state.state.name}</h4>
       <h4>{state.state.address}</h4>
       <img src={state.state.img} alt={state.state.img} />
 
-    </>
+    </section>
   );
 }
 
