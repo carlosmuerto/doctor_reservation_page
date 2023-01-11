@@ -12,9 +12,13 @@ import { Link } from 'react-router-dom';
 import {
   BsGithub, BsLinkedin, BsTwitter, BsFacebook,
 } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import loadingStatus from '../../redux/reduxConst';
 
 const NavBar = (props) => {
   const { name } = props;
+  const user = useSelector((store) => store.Auth.user);
+  const loading = useSelector((store) => store.Auth.loading);
 
   return (
     <>
@@ -35,7 +39,16 @@ const NavBar = (props) => {
 
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Doctor app
+                  <h7>Doctor&apos;s app</h7>
+                  <p>
+                    Welcome
+                    {
+                      loading === loadingStatus.succeeded
+                        ? ` ${user.userName}`
+                        : null
+                    }
+                    !
+                  </p>
                 </Offcanvas.Title>
               </Offcanvas.Header>
 
