@@ -8,17 +8,28 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import {
   BsGithub, BsLinkedin, BsTwitter, BsFacebook,
 } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import loadingStatus from '../../redux/reduxConst';
+import * as AuthSlice from '../../redux/Auth/AuthSlice';
 
 const NavBar = (props) => {
   const { name } = props;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.Auth.user);
   const loading = useSelector((store) => store.Auth.loading);
+
+  const logOutOnClick = async () => {
+    dispatch(
+      AuthSlice.logOut(user),
+      navigate('/'),
+    );
+  };
 
   return (
     <>
@@ -39,7 +50,7 @@ const NavBar = (props) => {
 
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  <h7>Doctor&apos;s app</h7>
+                  <h6>Doctor&apos;s app</h6>
                   <p>
                     Welcome
                     {
@@ -64,57 +75,35 @@ const NavBar = (props) => {
                     title="Options"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <NavDropdown.Item href="/">SignOut</NavDropdown.Item>
+                    <NavDropdown.Item onClick={logOutOnClick}>
+                      <strong>SignOut</strong>
+                    </NavDropdown.Item>
 
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="https://github.com/microverseinc/curriculum-final-capstone/blob/main/projects/business_requirements.md">Project</NavDropdown.Item>
 
                     <NavDropdown.Item>
                       <span>Carlos vivas</span>
-                      <a href="#actions">
-                        <BsFacebook />
-                      </a>
-                      <a href="#actions">
-                        <BsGithub />
-                      </a>
-                      <a href="#actions">
-                        <BsLinkedin />
-                      </a>
-                      <a href="#actions">
-                        <BsTwitter />
-                      </a>
+                      <BsFacebook />
+                      <BsGithub />
+                      <BsLinkedin />
+                      <BsTwitter />
                     </NavDropdown.Item>
 
                     <NavDropdown.Item>
                       <span>Matias Aguirre</span>
-                      <a href="#actions">
-                        <BsFacebook />
-                      </a>
-                      <a href="#actions">
-                        <BsGithub />
-                      </a>
-                      <a href="#actions">
-                        <BsLinkedin />
-                      </a>
-                      <a href="#actions">
-                        <BsTwitter />
-                      </a>
+                      <BsFacebook />
+                      <BsGithub />
+                      <BsLinkedin />
+                      <BsTwitter />
                     </NavDropdown.Item>
 
                     <NavDropdown.Item>
                       <span>Erik Stoupignan</span>
-                      <a href="#actions">
-                        <BsFacebook />
-                      </a>
-                      <a href="#actions">
-                        <BsGithub />
-                      </a>
-                      <a href="#actions">
-                        <BsLinkedin />
-                      </a>
-                      <a href="#actions">
-                        <BsTwitter />
-                      </a>
+                      <BsFacebook />
+                      <BsGithub />
+                      <BsLinkedin />
+                      <BsTwitter />
                     </NavDropdown.Item>
 
                   </NavDropdown>
@@ -139,13 +128,6 @@ const NavBar = (props) => {
       ))}
     </>
   );
-
-  // <>
-  //   <div className="container">
-  //     <p>Temporal Navbar</p>
-  //     <NavLink to="/ReservationPage"> Reservation Page </NavLink>
-  //   </div>
-  // </>
 };
 
 NavBar.propTypes = {
