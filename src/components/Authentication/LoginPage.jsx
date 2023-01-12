@@ -1,6 +1,6 @@
 import { Formik, Field, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import * as AuthSlice from '../../redux/Auth/AuthSlice';
 import loadingStatus from '../../redux/reduxConst';
 
@@ -40,14 +40,14 @@ const LoginPage = () => {
             {
               loading === loadingStatus.succeeded
                 ? `Welcome ${user.userName}!`
-                : 'LogIn'
+                : <NavLink to="/" className="container"> LogIn </NavLink>
             }
           </h2>
           <div className="">
             {
             loading === loadingStatus.succeeded
               ? null
-              : <Link to="/RegistrionPage" className=""> SignUp </Link>
+              : <NavLink to="/RegistrionPage" className=""> SignUp </NavLink>
             }
           </div>
         </div>

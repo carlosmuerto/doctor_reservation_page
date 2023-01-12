@@ -88,3 +88,8 @@
 .card_container {
   width: 80vw;
 }
+
+a {
+  text-decoration: none !important;
+  color: black !important;
+}

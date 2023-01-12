@@ -8,7 +8,7 @@ const RegistrionPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const user = useSelector((store) => store.Auth.user);
+  const user = useSelector((store) => store.Auth.user);
   const loading = useSelector((store) => store.Auth.loading);
 
   const onSubmit = async (values) => {
@@ -34,26 +34,40 @@ const RegistrionPage = () => {
   };
 
   return (
-    <div>
+    <>
+      <section className="Splash_container d-flex align-items-center placeholder-wave background_blur" />
+      <div className="card position-absolute top-50 start-50 translate-middle card_container">
 
-      {
-        loading === loadingStatus.succeeded
-          ? null
-          : <NavLink to="/LoginPage" className="container"> Login Page </NavLink>
-      }
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-      >
-        <Form>
-          <Field name="userName" type="text" placeholder="User Name" required autofocus="autofocus" />
-          <Field name="email" type="email" placeholder="eMail" required />
-          <Field name="password" type="password" placeholder="Password" required />
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
+        <div className="card-header d-flex justify-content-between">
+          <h2 className="">
+            {
+              loading === loadingStatus.succeeded
+                ? `Welcome ${user.userName}!`
+                : <NavLink to="/" className="container"> SignUp </NavLink>
+            }
+          </h2>
+          <div className="">
+            {
+              loading === loadingStatus.succeeded
+                ? null
+                : <NavLink to="/LoginPage" className="container"> Login Page </NavLink>
+            }
+          </div>
+        </div>
 
-    </div>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+        >
+          <Form>
+            <Field name="userName" type="text" placeholder="User Name" className="form-control" required autofocus="autofocus" />
+            <Field name="email" type="email" placeholder="eMail" className="form-control" required />
+            <Field name="password" type="password" placeholder="Password" className="form-control" required />
+            <button type="submit" className="container btn btn-outline-secondary">Submit</button>
+          </Form>
+        </Formik>
+      </div>
+    </>
   );
 };
 
