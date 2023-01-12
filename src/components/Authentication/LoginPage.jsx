@@ -58,7 +58,7 @@ const LoginPage = () => {
           onSubmit={onSubmit}
         >
           <Form className="">
-            <Field name="email" type="email" placeholder="Email" className="form-control" required autofocus="autofocus" />
+            <Field name="email" type="email" placeholder="Email" className="form-control" required />
             <Field name="password" type="password" placeholder="Password" className="form-control" required />
             <button type="submit" className="container btn btn-outline-secondary">Submit</button>
           </Form>
