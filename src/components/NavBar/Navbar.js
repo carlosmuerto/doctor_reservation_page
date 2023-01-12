@@ -9,7 +9,6 @@ import Form from 'react-bootstrap/Form';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import PropTypes from 'prop-types';
 import { Link, useNavigate } from 'react-router-dom';
-
 import {
   BsGithub, BsLinkedin, BsTwitter, BsFacebook,
 } from 'react-icons/bs';

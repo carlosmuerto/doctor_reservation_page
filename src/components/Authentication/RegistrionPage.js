@@ -46,7 +46,7 @@ const RegistrionPage = () => {
         onSubmit={onSubmit}
       >
         <Form>
-          <Field name="userName" type="text" placeholder="User Name" required />
+          <Field name="userName" type="text" placeholder="User Name" required autofocus="autofocus" />
           <Field name="email" type="email" placeholder="eMail" required />
           <Field name="password" type="password" placeholder="Password" required />
           <button type="submit">Submit</button>

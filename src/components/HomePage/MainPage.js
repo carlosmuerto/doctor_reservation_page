@@ -2,7 +2,7 @@ import '../../styles/App.css';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getMessage } from '../../redux/Greeting/Greeting';
+import { getData } from '../../redux/Greeting/Greeting';
 import ItemsList from '../DoctorsData/ItemObject';
 import NavBar from '../NavBar/Navbar';
 
@@ -12,7 +12,7 @@ function MainPage() {
 
   useEffect(() => {
     if (!greetingShow.length) {
-      dispatch(getMessage());
+      dispatch(getData());
     }
   });
 

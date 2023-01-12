@@ -2,14 +2,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // const ApiData = 'http://localhost:3000/api/message';
 
-// const getMessage = createAsyncThunk('greetings/getGreetings',
+// const getData = createAsyncThunk('greetings/getGreetings',
 //   async () => (
 // const response = await fetch(ApiData);
 // const answer = await response.json();
 // return answer;
 // ));
 
-const getMessage = createAsyncThunk(
+const getData = createAsyncThunk(
   'greetings/getGreetings',
   async () => (
     [{
@@ -52,10 +52,10 @@ export const dataSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(getMessage.fulfilled, (state, action) => action.payload);
+    builder.addCase(getData.fulfilled, (state, action) => action.payload);
   },
 });
 
 const { action, reducer } = dataSlice;
-export { action, getMessage };
+export { action, getData };
 export default reducer;

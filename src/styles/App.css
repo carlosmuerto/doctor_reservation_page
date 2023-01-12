@@ -57,8 +57,8 @@
 .Splash_container {
   height: 100vh;
   width: 100vw;
-  background: radial-gradient(at 18% 99%, rgb(223, 229, 113) 0px, transparent 50%) repeat scroll 0% 0%, 
-                radial-gradient(at 97% 8%, rgb(118, 249, 173) 0px, transparent 50%) repeat scroll 0% 0%, 
+  background: radial-gradient(at 18% 99%, rgb(113, 115, 229) 0px, transparent 50%) repeat scroll 0% 0%, 
+                radial-gradient(at 97% 8%, rgb(118, 249, 199) 0px, transparent 50%) repeat scroll 0% 0%, 
                 
                 radial-gradient(at 96% 10%, rgb(222, 81, 251) 0px, transparent 50%) repeat scroll 0% 0%,    
                 radial-gradient(at 42% 20%, rgb(116, 240, 251) 0px, transparent 50%) repeat scroll 0% 0%,
@@ -74,11 +74,17 @@
   text-shadow: 2px 2px 2px black;
 }
 
+.background_blur {
+  filter: blur(5px);
+}
 
-
-.example {
+/* .example {
   color: rgb(63, 43, 216);
   color: rgb(116, 240, 251);
   color: rgb(223, 229, 113);
   color: rgb(118, 249, 173);
+} */
+
+.card_container {
+  width: 80vw;
 }

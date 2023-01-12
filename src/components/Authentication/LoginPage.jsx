@@ -1,6 +1,6 @@
 import { Formik, Field, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as AuthSlice from '../../redux/Auth/AuthSlice';
 import loadingStatus from '../../redux/reduxConst';
 
@@ -32,39 +32,39 @@ const LoginPage = () => {
   };
 
   return (
-    <section>
-      <div>
-        <h2>
-          {
+    <>
+      <section className="Splash_container d-flex align-items-center placeholder-wave background_blur" />
+      <div className="card position-absolute top-50 start-50 translate-middle card_container">
+        <div className="card-header d-flex justify-content-between">
+          <h2 className="">
+            {
+              loading === loadingStatus.succeeded
+                ? `Welcome ${user.userName}!`
+                : 'LogIn'
+            }
+          </h2>
+          <div className="">
+            {
             loading === loadingStatus.succeeded
-              ? `Welcome ${user.userName}!`
-              : 'LogIn'
-          }
-        </h2>
-
-        <div className="my_border">
-
-          {
-          loading === loadingStatus.succeeded
-            ? null
-            : <NavLink to="/RegistrionPage" className="container"> Registrion Page </NavLink>
-          }
+              ? null
+              : <Link to="/RegistrionPage" className=""> SignUp </Link>
+            }
+          </div>
         </div>
 
+        <Formik
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+        >
+          <Form className="">
+            <Field name="email" type="email" placeholder="eMail" className="form-control" required autofocus="autofocus" />
+            <Field name="password" type="password" placeholder="Password" className="form-control" required />
+            <button type="submit" className="container btn btn-outline-secondary">Submit</button>
+          </Form>
+        </Formik>
+
       </div>
-
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-      >
-        <Form className="my_border">
-          <Field name="email" type="email" placeholder="eMail" required />
-          <Field name="password" type="password" placeholder="Password" required />
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
-
-    </section>
+    </>
   );
 };
 

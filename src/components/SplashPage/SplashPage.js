@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 
 function SplashPage() {
   return (
-    <section className="Splash_container d-flex flex-column justify-content-center align-items-center">
+    <section className="Splash_container d-flex flex-column justify-content-center align-items-center placeholder-wave">
 
       <Row className="pb-5">
         <Col className=" d-flex justify-content-center align-items-center text-center">
