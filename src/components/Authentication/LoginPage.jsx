@@ -60,7 +60,7 @@ const LoginPage = () => {
           <Form className="">
             <Field name="email" type="email" placeholder="Email" className="form-control" required />
             <Field name="password" type="password" placeholder="Password" className="form-control" required />
-            <button type="submit" className="container btn btn-outline-secondary">Submit</button>
+            <button type="submit" className="container-fluid btn btn-outline-secondary">Submit</button>
           </Form>
         </Formik>
 
