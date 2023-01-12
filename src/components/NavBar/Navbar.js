@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -8,13 +7,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import PropTypes from 'prop-types';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   BsGithub, BsLinkedin, BsTwitter, BsFacebook,
 } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import loadingStatus from '../../redux/reduxConst';
 import * as AuthSlice from '../../redux/Auth/AuthSlice';
+import '../../styles/Navbar.scss';
 
 const NavBar = (props) => {
   const { name } = props;
@@ -33,9 +33,9 @@ const NavBar = (props) => {
   return (
     <>
       {['false'].map((expand) => (
-        <Navbar key={false} bg="light" expand={expand} className="mb-3" fixed="top">
+        <Navbar key={false} expand={expand} className="" fixed="top">
 
-          <Container fluid>
+          <Container>
 
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 

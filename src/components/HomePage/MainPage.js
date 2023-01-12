@@ -1,4 +1,9 @@
-import '../../styles/App.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+import '../../styles/Swiper.scss';
+import { EffectCards } from 'swiper';
+import '../../styles/App.scss';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -17,26 +22,35 @@ function MainPage() {
   });
 
   return (
-    <section className="margin_top">
-      <NavBar name="Home Page" />
+    <>
+      <section className="Splash_container " />
 
-      <ul>
+      <div>
+        <NavBar name="Home Page" />
 
-        {greetingShow.map((data) => (
-          <li key={data.name} className="container">
+        <Swiper
+          effect="cards"
+          grabCursor
+          modules={[EffectCards]}
+          className="mySwiper position-absolute top-50 start-50 translate-middle"
+        >
 
-            <Link to="/Details" state={{ state: data }}>
+          {greetingShow.map((data) => (
+            <SwiperSlide key={data.name} className="">
 
-              <ItemsList data={data} id={data.name} />
+              <Link to="/Details" state={{ state: data }}>
 
-            </Link>
+                <ItemsList data={data} id={data.name} />
 
-          </li>
-        ))}
+              </Link>
 
-      </ul>
+            </SwiperSlide>
+          ))}
 
-    </section>
+        </Swiper>
+
+      </div>
+    </>
   );
 }
 

@@ -34,6 +34,7 @@ const LoginPage = () => {
   return (
     <>
       <section className="Splash_container d-flex align-items-center placeholder-wave background_blur" />
+
       <div className="card position-absolute top-50 start-50 translate-middle card_container">
         <div className="card-header d-flex justify-content-between">
           <h2 className="">
@@ -57,7 +58,7 @@ const LoginPage = () => {
           onSubmit={onSubmit}
         >
           <Form className="">
-            <Field name="email" type="email" placeholder="eMail" className="form-control" required autofocus="autofocus" />
+            <Field name="email" type="email" placeholder="Email" className="form-control" required autofocus="autofocus" />
             <Field name="password" type="password" placeholder="Password" className="form-control" required />
             <button type="submit" className="container btn btn-outline-secondary">Submit</button>
           </Form>
