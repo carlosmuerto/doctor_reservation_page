@@ -1,14 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// const ApiData = 'http://localhost:3000/api/message';
-
-// const getData = createAsyncThunk('greetings/getGreetings',
-//   async () => (
-// const response = await fetch(ApiData);
-// const answer = await response.json();
-// return answer;
-// ));
-
 const getData = createAsyncThunk(
   'greetings/getGreetings',
   async () => (

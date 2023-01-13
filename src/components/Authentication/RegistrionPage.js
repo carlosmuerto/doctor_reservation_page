@@ -24,19 +24,10 @@ const RegistrionPage = () => {
     }
   }, [dispatch, loading, navigate]);
 
-  // ? <button type="button" onClick={logOutOnClick}>Log Out</button>
-  //
-  // const logOutOnClick = async () => {
-  //   dispatch(
-  //     AuthSlice.logOut(user),
-  //   );
-  // };
-
   const initialValues = {
     userName: '',
     email: '',
     password: '',
-
   };
 
   return (
