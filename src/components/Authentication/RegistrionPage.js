@@ -1,4 +1,5 @@
 import { Formik, Field, Form } from 'formik';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as AuthSlice from '../../redux/Auth/AuthSlice';
@@ -14,9 +15,14 @@ const RegistrionPage = () => {
   const onSubmit = async (values) => {
     dispatch(
       AuthSlice.signUp(values),
-      navigate('/LogInPage'),
     );
   };
+
+  useEffect(() => {
+    if (loading === loadingStatus.succeeded) {
+      navigate('/LoginPage');
+    }
+  }, [dispatch, loading, navigate]);
 
   // ? <button type="button" onClick={logOutOnClick}>Log Out</button>
   //

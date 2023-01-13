@@ -1,21 +1,36 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 
-const BASEURL = 'http://localhost:3000';
+// const BASEURL = 'http://localhost:3000/users/current';
 
-const options = {
-  headers: {
-    accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-};
+// const options = {
+//   headers: {
+//     accept: 'application/json',
+//     'Content-Type': 'application/json',
+//   },
+// };
 
 const currentUser = async () => {
-  const answer = await axios.get(`${BASEURL}/users/current`, {}, options);
+  // const currenUserOptions = {
+  //   headers: {
+  //     ...options.headers,
+  //     authorization,
+  //   },
+  // };
+
+  console.log('llamando función');
+
+  const answer = await axios.get('http://localhost:3000/users/current');
 
   const user = answer.data;
   user.token = answer.headers.authorization;
+  console.log(user);
 
   return user;
 };
 
-export default currentUser;
+const CheckUser = {
+  currentUser,
+};
+
+export default CheckUser;
