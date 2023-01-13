@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import greetingsReducer from './greetings/greetingsSlice';
+import AuthReducer from './Auth/AuthSlice';
+import greetingsReducer from './Greeting/Greeting';
+import CurrentUser from './Auth/CurrentUserSlice';
 
 const store = configureStore({
   reducer: {
-    greetings: greetingsReducer,
+    Auth: AuthReducer,
+    doctorsData: greetingsReducer,
+    User: CurrentUser,
   },
 });
 
