@@ -7,12 +7,12 @@ const ACTION_PREPEND = 'API/Doctors';
 
 const initialState = {
   loading: loadingStatus.idle,
-  doctors: [],
+  list: [],
 };
 
 const fetch = createAsyncThunk(
   `${ACTION_PREPEND}/FETCH`,
-  async () => DoctorsAPI.fetch(),
+  async ({ token }) => DoctorsAPI.fetch(token),
 );
 
 const DoctorsSlice = createSlice({
@@ -27,8 +27,7 @@ const DoctorsSlice = createSlice({
       .addCase(fetch.fulfilled, (state, action) => {
         state.loading = loadingStatus.succeeded;
 
-        // eslint-disable-next-line no-console
-        console.log(action);
+        state.list = action.payload;
       })
       .addCase(fetch.rejected, (state) => {
         state.loading = loadingStatus.failed;
