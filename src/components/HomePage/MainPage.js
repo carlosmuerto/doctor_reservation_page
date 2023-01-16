@@ -16,13 +16,14 @@ const MainPage = () => {
   // const dispatch = useDispatch();
   // const navigate = useNavigate();
   const greetingShow = useSelector((store) => store.doctorsData);
-  // const loading = useSelector((store) => store.Auth.loading);
+  const loading = useSelector((store) => store.Auth.loading);
   const user = useSelector((store) => store.User);
 
   useEffect(() => {
     // dispatch(
     //   CurrentUser.currentUser(user),
     // );
+    console.log('Loading:', loading);
     console.log('MainPage User:', user);
   });
 

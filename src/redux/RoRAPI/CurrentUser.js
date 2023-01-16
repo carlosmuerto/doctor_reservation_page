@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import axios from 'axios';
 
 const BASEURL = 'http://localhost:3000/users/current';
@@ -18,20 +17,9 @@ const currentUser = async (authorization) => {
     },
   };
 
-  // console.log('TOKEN:', authorization);
-
   const answer = await axios.get(BASEURL, CurrentUserOptions);
-
-  // console.log('answer.headers.auth:', answer.headers.authorization);
-
   const user = answer.data;
-
-  // console.log('user:', user);
-
   user.token = authorization;
-
-  // console.log('answer with token:', user);
-
   return user;
 };
 

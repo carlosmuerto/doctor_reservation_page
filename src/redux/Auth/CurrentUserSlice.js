@@ -33,8 +33,6 @@ const CurrentUserSlice = createSlice({
       .addCase(currentUser.fulfilled, (state, action) => {
         state.loading = loadingStatus.succeeded;
 
-        // eslint-disable-next-line no-console
-        // console.log(action.payload);
         const { email, name, role } = action.payload;
 
         const userData = {
