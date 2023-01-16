@@ -45,7 +45,7 @@ const AuthSlice = createSlice({
         state.loading = loadingStatus.succeeded;
 
         // eslint-disable-next-line no-console
-        console.log(action);
+        // console.log(action);
 
         const {
           email, name, role,

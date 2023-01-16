@@ -20,8 +20,10 @@ const NavBar = (props) => {
   const { name } = props;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((store) => store.Auth.user);
-  const loading = useSelector((store) => store.Auth.loading);
+  // const user = useSelector((store) => store.Auth.user);
+  // const loading = useSelector((store) => store.Auth.loading);
+  const user = useSelector((store) => store.User.user);
+  const loading = useSelector((store) => store.User.loading);
 
   const logOutOnClick = async () => {
     dispatch(
