@@ -5,20 +5,25 @@ import '../../styles/Swiper.scss';
 import { EffectCards } from 'swiper';
 import '../../styles/App.scss';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getData } from '../../redux/Greeting/Greeting';
 import ItemsList from '../DoctorsData/ItemObject';
 import NavBar from '../NavBar/Navbar';
+// import loadingStatus from '../../redux/reduxConst';
+// import * as CurrentUser from '../../redux/Auth/CurrentUserSlice';
 
-function MainPage() {
-  const dispatch = useDispatch();
+const MainPage = () => {
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const greetingShow = useSelector((store) => store.doctorsData);
+  // const loading = useSelector((store) => store.Auth.loading);
+  const user = useSelector((store) => store.User);
 
   useEffect(() => {
-    if (!greetingShow.length) {
-      dispatch(getData());
-    }
+    // dispatch(
+    //   CurrentUser.currentUser(user),
+    // );
+    console.log('MainPage User:', user);
   });
 
   return (
@@ -52,6 +57,6 @@ function MainPage() {
       </div>
     </>
   );
-}
+};
 
 export default MainPage;
