@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import AuthReducer from './Auth/AuthSlice';
-import greetingsReducer from './Greeting/Greeting';
+import DoctorsReducer from './Doctors/DoctorsSlice';
 import CurrentUser from './Auth/CurrentUserSlice';
 
 const store = configureStore({
   reducer: {
     Auth: AuthReducer,
-    doctorsData: greetingsReducer,
+    doctors: DoctorsReducer,
     User: CurrentUser,
   },
 });
