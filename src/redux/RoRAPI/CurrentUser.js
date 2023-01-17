@@ -16,7 +16,6 @@ const currentUser = async (authorization) => {
       authorization,
     },
   };
-
   const answer = await axios.get(BASEURL, CurrentUserOptions);
   const user = answer.data;
   user.token = authorization;

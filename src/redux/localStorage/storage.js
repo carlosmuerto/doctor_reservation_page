@@ -12,14 +12,13 @@ const loadState = () => {
       console.log('Local Storage null');
       return null;
     }
-    // console.log('Info found it');
+    console.log('Local Storage Loaded');
     const data = JSON.parse(serializedData);
-    // console.log(data.user.token);
-    const UserToken = data.user;
-
+    const UserToken = {};
+    UserToken.token = data;
     return UserToken;
   } catch (error) {
-    console.log('Local Storage error');
+    console.log('Local Storage error', error);
     return error;
   }
 };

@@ -5,26 +5,25 @@ import '../../styles/Swiper.scss';
 import { EffectCards } from 'swiper';
 import '../../styles/App.scss';
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ItemsList from '../DoctorsData/ItemObject';
 import NavBar from '../NavBar/Navbar';
 // import loadingStatus from '../../redux/reduxConst';
-// import * as CurrentUser from '../../redux/Auth/CurrentUserSlice';
-// import { loadState } from '../../redux/localStorage/storage';
+import * as CurrentUser from '../../redux/Auth/CurrentUserSlice';
+import { loadState } from '../../redux/localStorage/storage';
 
 const MainPage = () => {
   // const navigate = useNavigate();
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const greetingShow = useSelector((store) => store.doctorsData);
   // const loading = useSelector((store) => store.Auth.loading);
-  // const user = useSelector((store) => store.User);
 
   useEffect(() => {
-    // dispatch(
-    //   CurrentUser.currentUser(loadState()),
-    // );
+    dispatch(
+      CurrentUser.currentUser(loadState()),
+    );
   });
 
   return (
