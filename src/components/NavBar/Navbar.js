@@ -1,10 +1,7 @@
 import React from 'react';
-// import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-// import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -12,20 +9,19 @@ import {
   BsGithub, BsLinkedin, BsTwitter, BsFacebook,
 } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
-import loadingStatus from '../../redux/reduxConst';
 import * as AuthSlice from '../../redux/Auth/AuthSlice';
 import '../../styles/Navbar.scss';
+import { loadLocalStorage } from '../../redux/localStorage/storage';
 
 const NavBar = (props) => {
   const { name } = props;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((store) => store.Auth.user);
-  const loading = useSelector((store) => store.Auth.loading);
+  const user = useSelector((store) => store.User.user);
 
   const logOutOnClick = async () => {
     dispatch(
-      AuthSlice.logOut(user),
+      AuthSlice.logOut(loadLocalStorage()),
       navigate('/'),
     );
   };
@@ -52,11 +48,8 @@ const NavBar = (props) => {
                   <h6>Doctor&apos;s app</h6>
                   <p>
                     Welcome
-                    {
-                      loading === loadingStatus.succeeded
-                        ? ` ${user.userName}`
-                        : null
-                    }
+                    {' '}
+                    {user.userName}
                     !
                   </p>
                 </Offcanvas.Title>
@@ -131,16 +124,6 @@ const NavBar = (props) => {
                     <p>© All rights reserved</p>
                   </div>
                 </div>
-
-                {/* <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success">Search</Button>
-                </Form> */}
 
               </Offcanvas.Body>
 

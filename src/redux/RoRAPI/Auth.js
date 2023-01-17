@@ -1,5 +1,6 @@
 /* eslint-disable no-promise-executor-return */
 import axios from 'axios';
+import { deleteLocalStorage, saveLocalStorage } from '../localStorage/storage';
 
 const BASEURL = 'http://localhost:3000';
 
@@ -21,6 +22,9 @@ const login = async (email, password) => {
   const user = res.data;
   user.token = res.headers.authorization;
 
+  if (res.status === 200) {
+    saveLocalStorage(res.headers.authorization);
+  }
   return user;
 };
 
@@ -48,6 +52,10 @@ const logout = async (authorization) => {
   };
 
   const res = await axios.delete(`${BASEURL}/logout`, logoutOptions);
+
+  if (res.status === 200) {
+    deleteLocalStorage();
+  }
 
   return res.data;
 };
