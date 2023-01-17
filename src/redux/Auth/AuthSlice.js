@@ -44,9 +44,6 @@ const AuthSlice = createSlice({
       .addCase(logIn.fulfilled, (state, action) => {
         state.loading = loadingStatus.succeeded;
 
-        // eslint-disable-next-line no-console
-        // console.log(action);
-
         const {
           email, name, role,
         } = action.payload.data;
@@ -70,9 +67,6 @@ const AuthSlice = createSlice({
       .addCase(signUp.fulfilled, (state, action) => {
         state.loading = loadingStatus.succeeded;
 
-        // eslint-disable-next-line no-console
-        console.log(action);
-
         const { email, name, role } = action.payload.data;
 
         const userData = {
@@ -89,12 +83,9 @@ const AuthSlice = createSlice({
       })
       // /logout
       .addCase(logOut.pending, () => {})
-      .addCase(logOut.fulfilled, (state, action) => {
+      .addCase(logOut.fulfilled, (state) => {
         state.loading = loadingStatus.idle;
         state.user = initialState.user;
-
-        // eslint-disable-next-line no-console
-        console.log(action);
       })
       .addCase(logOut.rejected, () => {});
   },

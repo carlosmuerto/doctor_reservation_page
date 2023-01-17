@@ -4,7 +4,7 @@ import loadingStatus from '../reduxConst';
 
 const LOCAL_STORAGE_NAME = 'token';
 
-const loadState = () => {
+const loadLocalStorage = () => {
   try {
     const serializedData = localStorage.getItem(LOCAL_STORAGE_NAME);
 
@@ -23,13 +23,8 @@ const loadState = () => {
   }
 };
 
-const saveState = (state) => {
+const saveLocalStorage = (state) => {
   try {
-    // if (state.User.loading === loadingStatus.succeeded) {
-    //   // const serializedData = JSON.stringify(state.User);
-    //   console.log('State for the User information');
-    //   // localStorage.setItem('state', serializedData);
-    // }
     if (state.Auth.loading === loadingStatus.succeeded) {
       console.log('Save token into the localStorage as "token"');
       // console.log('Auth state:', state.Auth.user.token);
@@ -41,7 +36,18 @@ const saveState = (state) => {
   }
 };
 
+const deleteLocalStorage = () => {
+  try {
+    console.log('Delete token from the localStorage');
+    const token = 'Come back soon!';
+    localStorage.setItem(LOCAL_STORAGE_NAME, token);
+  } catch (error) {
+    console.log('Error deleting information from the Local Storage:', error);
+  }
+};
+
 export {
-  loadState,
-  saveState,
+  loadLocalStorage,
+  saveLocalStorage,
+  deleteLocalStorage,
 };

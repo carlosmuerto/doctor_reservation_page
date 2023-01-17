@@ -1,5 +1,6 @@
 /* eslint-disable no-promise-executor-return */
 import axios from 'axios';
+import { deleteLocalStorage } from '../localStorage/storage';
 
 const BASEURL = 'http://localhost:3000';
 
@@ -48,6 +49,10 @@ const logout = async (authorization) => {
   };
 
   const res = await axios.delete(`${BASEURL}/logout`, logoutOptions);
+
+  if (res.status === 200) {
+    deleteLocalStorage();
+  }
 
   return res.data;
 };

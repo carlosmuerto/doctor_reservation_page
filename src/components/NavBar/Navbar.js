@@ -27,8 +27,6 @@ const NavBar = (props) => {
   const user = useSelector((store) => store.User.user);
   const loading = useSelector((store) => store.Auth.loading);
 
-  console.log('Navbar User:', user);
-
   // useEffect(() => {
   //   if (loading === loadingStatus.succeeded) {
   //     dispatch(

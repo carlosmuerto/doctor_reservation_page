@@ -11,7 +11,7 @@ import ItemsList from '../DoctorsData/ItemObject';
 import NavBar from '../NavBar/Navbar';
 // import loadingStatus from '../../redux/reduxConst';
 import * as CurrentUser from '../../redux/Auth/CurrentUserSlice';
-import { loadState } from '../../redux/localStorage/storage';
+import { loadLocalStorage } from '../../redux/localStorage/storage';
 
 const MainPage = () => {
   // const navigate = useNavigate();
@@ -22,7 +22,7 @@ const MainPage = () => {
 
   useEffect(() => {
     dispatch(
-      CurrentUser.currentUser(loadState()),
+      CurrentUser.currentUser(loadLocalStorage()),
     );
   });
 
