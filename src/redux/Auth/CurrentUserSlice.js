@@ -8,6 +8,7 @@ const ACTION_PREPEND = 'USER/CURRENTUSER';
 const initialState = {
   loading: loadingStatus.idle,
   user: {
+    id: '',
     userName: '',
     eMail: '',
     token: '',
@@ -17,7 +18,7 @@ const initialState = {
 
 const currentUser = createAsyncThunk(
   ACTION_PREPEND,
-  async () => CheckUser.currentUser(),
+  async ({ token }) => CheckUser.currentUser(token),
 );
 
 const CurrentUserSlice = createSlice({
@@ -32,8 +33,17 @@ const CurrentUserSlice = createSlice({
       .addCase(currentUser.fulfilled, (state, action) => {
         state.loading = loadingStatus.succeeded;
 
-        // eslint-disable-next-line no-console
-        console.log(action);
+        const { email, name, role } = action.payload;
+
+        const userData = {
+          id: action.payload.id,
+          userName: name,
+          eMail: email,
+          token: action.payload.token,
+          role,
+        };
+
+        state.user = userData;
       })
       .addCase(currentUser.rejected, (state) => {
         state.loading = loadingStatus.failed;

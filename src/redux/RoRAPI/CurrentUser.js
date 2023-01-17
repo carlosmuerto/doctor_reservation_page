@@ -1,10 +1,25 @@
 import axios from 'axios';
 
-const currentUser = async () => {
-  const answer = await axios.get('http://localhost:3000/users/current');
+const BASEURL = 'http://localhost:3000/users/current';
 
+const options = {
+  headers: {
+    accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+};
+
+const currentUser = async (authorization) => {
+  const CurrentUserOptions = {
+    headers: {
+      ...options.headers,
+      authorization,
+    },
+  };
+  const answer = await axios.get(BASEURL, CurrentUserOptions);
   const user = answer.data;
-  user.token = answer.headers.authorization;
+
+  user.token = authorization;
   return user;
 };
 

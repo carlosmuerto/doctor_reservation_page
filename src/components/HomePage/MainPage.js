@@ -9,25 +9,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ItemsList from '../DoctorsData/ItemObject';
 import NavBar from '../NavBar/Navbar';
+import * as CurrentUser from '../../redux/Auth/CurrentUserSlice';
+import { loadLocalStorage } from '../../redux/localStorage/storage';
 import * as DoctorsSlice from '../../redux/Doctors/DoctorsSlice';
+import loadingStatus from '../../redux/reduxConst';
 
-function MainPage() {
+const MainPage = () => {
   const dispatch = useDispatch();
-  const user = useSelector((store) => store.Auth.user);
   const doctors = useSelector((store) => store.doctors);
+  const user = useSelector((store) => store.User.user);
+  const UserLoading = useSelector((store) => store.User.loading);
 
   useEffect(() => {
     dispatch(
-      DoctorsSlice.fetch(user),
+      CurrentUser.currentUser(loadLocalStorage()),
     );
-  }, [user, dispatch]);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (UserLoading === loadingStatus.succeeded) {
+      dispatch(
+        DoctorsSlice.fetch(user),
+      );
+    }
+  }, [dispatch, user, UserLoading]);
 
   return (
     <>
       <section className="Splash_container " />
 
       <div>
-        <NavBar name="Home Page" />
+        <NavBar name={`Welcome ${user.userName}`} />
 
         <Swiper
           effect="cards"
@@ -53,6 +65,6 @@ function MainPage() {
       </div>
     </>
   );
-}
+};
 
 export default MainPage;
