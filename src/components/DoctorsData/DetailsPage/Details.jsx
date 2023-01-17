@@ -16,15 +16,19 @@ function Details() {
       <NavBar name="Details Page" />
 
       <div className="container">
-        <div className="row justify-content-md-center">
-          <div className="col-2 col-md-8">
+        <div className="row justify-content-center">
+          <div className="col-8 col-sm-2">
             <img src={state.state.photo} alt={state.state.name} className="img-fluid" />
           </div>
-          <div className="col-10 col-md-4">
-            <h1>{state.state.name}</h1>
-          </div>
-          <div className="col-10 col-md-4">
-            <h3>{state.state.specialization}</h3>
+          <div className="col-8 col-sm-10">
+            <div className="row">
+              <div className="col-12">
+                <h1>{state.state.name}</h1>
+              </div>
+              <div className="col-12">
+                <h3>{state.state.specialization}</h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
