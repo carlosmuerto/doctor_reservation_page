@@ -28,6 +28,16 @@ function Details() {
               <div className="col-12">
                 <h3>{state.state.specialization}</h3>
               </div>
+              <div className="col-12">
+                <button type="button" className="btn btn-danger">Danger</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-8 col-sm-10">
+            <div className="row">
+              <div className="col-12">
+                <h2>My Appointment</h2>
+              </div>
             </div>
           </div>
         </div>
