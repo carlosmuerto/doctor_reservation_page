@@ -7,19 +7,20 @@ import '../../styles/App.scss';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getData } from '../../redux/Greeting/Greeting';
 import ItemsList from '../DoctorsData/ItemObject';
 import NavBar from '../NavBar/Navbar';
+import * as DoctorsSlice from '../../redux/Doctors/DoctorsSlice';
 
 function MainPage() {
   const dispatch = useDispatch();
-  const greetingShow = useSelector((store) => store.doctorsData);
+  const user = useSelector((store) => store.Auth.user);
+  const doctors = useSelector((store) => store.doctors);
 
   useEffect(() => {
-    if (!greetingShow.length) {
-      dispatch(getData());
-    }
-  });
+    dispatch(
+      DoctorsSlice.fetch(user),
+    );
+  }, [user, dispatch]);
 
   return (
     <>
@@ -35,7 +36,7 @@ function MainPage() {
           className="mySwiper position-absolute top-50 start-50 translate-middle"
         >
 
-          {greetingShow.map((data) => (
+          {doctors.list.map((data) => (
             <SwiperSlide key={data.name} className="">
 
               <Link to="/Details" state={{ state: data }}>

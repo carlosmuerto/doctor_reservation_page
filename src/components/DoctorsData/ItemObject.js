@@ -6,8 +6,8 @@ function ItemsList(props) {
   return (
     <>
       <p>{data.name}</p>
-      <p>{data.address}</p>
-      <img src={data.img} alt={data.name} className="img_container" />
+      <p>{data.specialization}</p>
+      <img src={data.photo} alt={data.name} className="img_container" />
     </>
   );
 }
@@ -15,8 +15,8 @@ function ItemsList(props) {
 ItemsList.propTypes = {
   data: PropTypes.shape({
     name: PropTypes.string,
-    address: PropTypes.string,
-    img: PropTypes.string,
+    specialization: PropTypes.string,
+    photo: PropTypes.string,
   }).isRequired,
 };
 
