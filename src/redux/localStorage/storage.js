@@ -37,7 +37,6 @@ const saveState = (state) => {
       const token = JSON.stringify(state.Auth.user.token);
       localStorage.setItem(LOCAL_STORAGE_NAME, token);
     }
-    console.log(state.Auth.loading);
   } catch (error) {
     console.log('Error saving information into the Local Storage:', error);
   }

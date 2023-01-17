@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import loadingStatus from '../../redux/reduxConst';
 import * as AuthSlice from '../../redux/Auth/AuthSlice';
 import '../../styles/Navbar.scss';
+// import * as CurrentUser from '../../redux/Auth/CurrentUserSlice';
+// import { loadState } from '../../redux/localStorage/storage';
 
 const NavBar = (props) => {
   const { name } = props;
@@ -24,6 +26,16 @@ const NavBar = (props) => {
   // const loading = useSelector((store) => store.Auth.loading);
   const user = useSelector((store) => store.User.user);
   const loading = useSelector((store) => store.Auth.loading);
+
+  console.log('Navbar User:', user);
+
+  // useEffect(() => {
+  //   if (loading === loadingStatus.succeeded) {
+  //     dispatch(
+  //       CurrentUser.currentUser(loadState()),
+  //     );
+  //   }
+  // }, [loading, dispatch]);
 
   const logOutOnClick = async () => {
     dispatch(
