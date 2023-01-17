@@ -29,6 +29,11 @@ const saveState = (state) => {
       console.log('State updated on the Local Storage');
       localStorage.setItem('state', serializedData);
     }
+    if (state.Auth.loading === loadingStatus.succeeded) {
+      console.log('LOG OUT OR ENTRY');
+      console.log('Auth state:', state.Auth);
+    }
+    console.log(state.Auth.loading);
     // const serializedData = JSON.stringify(state.User);
     // console.log('State updated on the Local Storage');
     // localStorage.setItem('state', serializedData);
