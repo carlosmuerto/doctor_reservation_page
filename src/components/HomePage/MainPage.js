@@ -11,20 +11,28 @@ import ItemsList from '../DoctorsData/ItemObject';
 import NavBar from '../NavBar/Navbar';
 import * as CurrentUser from '../../redux/Auth/CurrentUserSlice';
 import { loadLocalStorage } from '../../redux/localStorage/storage';
+import * as DoctorsSlice from '../../redux/Doctors/DoctorsSlice';
+import loadingStatus from '../../redux/reduxConst';
 
 const MainPage = () => {
   const dispatch = useDispatch();
-  const greetingShow = useSelector((store) => store.doctorsData);
+  const doctors = useSelector((store) => store.doctors);
   const user = useSelector((store) => store.User.user);
+  const UserLoading = useSelector((store) => store.User.loading);
 
   useEffect(() => {
-    const GetUserInfo = () => {
+    dispatch(
+      CurrentUser.currentUser(loadLocalStorage()),
+    );
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (UserLoading === loadingStatus.succeeded) {
       dispatch(
-        CurrentUser.currentUser(loadLocalStorage()),
+        DoctorsSlice.fetch(user),
       );
-    };
-    window.addEventListener('load', GetUserInfo);
-  });
+    }
+  }, [dispatch, user, UserLoading]);
 
   return (
     <>
@@ -40,7 +48,7 @@ const MainPage = () => {
           className="mySwiper position-absolute top-50 start-50 translate-middle"
         >
 
-          {greetingShow.map((data) => (
+          {doctors.list.map((data) => (
             <SwiperSlide key={data.name} className="">
 
               <Link to="/Details" state={{ state: data }}>
