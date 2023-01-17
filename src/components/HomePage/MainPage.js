@@ -9,21 +9,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ItemsList from '../DoctorsData/ItemObject';
 import NavBar from '../NavBar/Navbar';
-// import loadingStatus from '../../redux/reduxConst';
 import * as CurrentUser from '../../redux/Auth/CurrentUserSlice';
 import { loadLocalStorage } from '../../redux/localStorage/storage';
 
 const MainPage = () => {
-  // const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const greetingShow = useSelector((store) => store.doctorsData);
-  // const loading = useSelector((store) => store.Auth.loading);
+  const user = useSelector((store) => store.User.user);
 
   useEffect(() => {
-    dispatch(
-      CurrentUser.currentUser(loadLocalStorage()),
-    );
+    const GetUserInfo = () => {
+      dispatch(
+        CurrentUser.currentUser(loadLocalStorage()),
+      );
+    };
+    window.addEventListener('load', GetUserInfo);
   });
 
   return (
@@ -31,7 +31,7 @@ const MainPage = () => {
       <section className="Splash_container " />
 
       <div>
-        <NavBar name="Home Page" />
+        <NavBar name={`Welcome ${user.userName}`} />
 
         <Swiper
           effect="cards"

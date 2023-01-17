@@ -1,6 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable max-len */
-import loadingStatus from '../reduxConst';
 
 const LOCAL_STORAGE_NAME = 'token';
 
@@ -25,12 +23,9 @@ const loadLocalStorage = () => {
 
 const saveLocalStorage = (state) => {
   try {
-    if (state.Auth.loading === loadingStatus.succeeded) {
-      console.log('Save token into the localStorage as "token"');
-      // console.log('Auth state:', state.Auth.user.token);
-      const token = JSON.stringify(state.Auth.user.token);
-      localStorage.setItem(LOCAL_STORAGE_NAME, token);
-    }
+    console.log('Save token into the localStorage as "token"');
+    const token = JSON.stringify(state);
+    localStorage.setItem(LOCAL_STORAGE_NAME, token);
   } catch (error) {
     console.log('Error saving information into the Local Storage:', error);
   }

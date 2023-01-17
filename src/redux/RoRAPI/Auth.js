@@ -1,6 +1,6 @@
 /* eslint-disable no-promise-executor-return */
 import axios from 'axios';
-import { deleteLocalStorage } from '../localStorage/storage';
+import { deleteLocalStorage, saveLocalStorage } from '../localStorage/storage';
 
 const BASEURL = 'http://localhost:3000';
 
@@ -22,6 +22,9 @@ const login = async (email, password) => {
   const user = res.data;
   user.token = res.headers.authorization;
 
+  if (res.status === 200) {
+    saveLocalStorage(res.headers.authorization);
+  }
   return user;
 };
 
