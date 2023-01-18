@@ -9,19 +9,9 @@ import * as AuthSlice from '../../redux/Auth/AuthSlice';
 import { loadLocalStorage } from '../../redux/localStorage/storage';
 
 function Appointments() {
-  // const navigate = useNavigate();
   const appointments = useSelector((store) => store.Appointments);
   const auth = useSelector((store) => store.Auth);
   const dispatch = useDispatch();
-
-  // Check user status and return to the login page if fail
-  // useEffect(() => {
-  //   if (auth.loading === loadingStatus.failed) {
-  //     // eslint-disable-next-line no-console
-  //     console.log('Login you user please!');
-  //     navigate('/loginPage');
-  //   }
-  // }, [auth, navigate]);
 
   useEffect(() => {
     if (auth.loading !== loadingStatus.succeeded && appointments.loading !== loadingStatus.succeeded) {
@@ -39,7 +29,6 @@ function Appointments() {
     }
   }, [dispatch, auth]);
 
-  // Appointment empty
   if (appointments.list.length === 0 && appointments.loading === loadingStatus.succeeded) {
     return (
       <section className="margin_top">
@@ -51,7 +40,6 @@ function Appointments() {
     );
   }
 
-  // Appointment loading
   if (appointments.loading !== loadingStatus.succeeded || auth.loading !== loadingStatus.succeeded) {
     return (
       <section className="margin_top">
