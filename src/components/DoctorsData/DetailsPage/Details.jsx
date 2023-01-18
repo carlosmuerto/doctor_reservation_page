@@ -25,7 +25,7 @@ function Details() {
       <section className="margin_top">
         <NavBar name="Details Page" />
         <div className="container">
-          <div>Doctor is Loading</div>
+          <div>Doctors Loading...</div>
         </div>
       </section>
     );
