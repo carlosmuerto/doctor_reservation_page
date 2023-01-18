@@ -6,11 +6,21 @@ import NavBar from '../../NavBar/Navbar';
 import * as DoctorsSlice from '../../../redux/Doctors/DoctorsSlice';
 
 function Details() {
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const doctors = useSelector((store) => store.doctors);
   const auth = useSelector((store) => store.Auth);
   const location = useLocation();
   const { state } = location;
+
+  // Check user status and return to the login page if fail
+  // useEffect(() => {
+  //   if (auth.loading === loadingStatus.failed || auth.loading === loadingStatus.idle) {
+  //     // eslint-disable-next-line no-console
+  //     console.log('Login you user please!');
+  //     navigate('/loginPage');
+  //   }
+  // }, [auth, navigate]);
 
   useEffect(() => {
     if (auth.loading === loadingStatus.succeeded && doctors.loading !== loadingStatus.succeeded) {
@@ -20,7 +30,7 @@ function Details() {
     }
   }, [dispatch, auth, doctors]);
 
-  if (doctors.loading !== loadingStatus.succeeded || auth.loading !== loadingStatus.succeeded) {
+  if (doctors.loading === loadingStatus.idle || auth.loading === loadingStatus.pending) {
     return (
       <section className="margin_top">
         <NavBar name="Details Page" />
@@ -41,7 +51,7 @@ function Details() {
 
   return (
     <section className="margin_top">
-      <NavBar name="Details Page" />
+      <NavBar name="Back" />
 
       <div className="container">
         <div className="row justify-content-center">

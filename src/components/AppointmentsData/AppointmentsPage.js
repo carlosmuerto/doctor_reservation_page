@@ -14,12 +14,12 @@ function Appointments() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (auth.loading !== loadingStatus.succeeded) {
+    if (auth.loading !== loadingStatus.succeeded && appointments.loading !== loadingStatus.succeeded) {
       dispatch(
         AuthSlice.load(loadLocalStorage()),
       );
     }
-  }, [dispatch, auth]);
+  }, [dispatch, auth, appointments]);
 
   useEffect(() => {
     if (auth.loading === loadingStatus.succeeded) {
@@ -29,7 +29,6 @@ function Appointments() {
     }
   }, [dispatch, auth]);
 
-  // Appointment empty
   if (appointments.list.length === 0 && appointments.loading === loadingStatus.succeeded) {
     return (
       <section className="margin_top">
@@ -41,11 +40,10 @@ function Appointments() {
     );
   }
 
-  // Appointment loading
   if (appointments.loading !== loadingStatus.succeeded || auth.loading !== loadingStatus.succeeded) {
     return (
       <section className="margin_top">
-        <NavBar name="Details Page" />
+        <NavBar name="Appointments Page" />
         <div className="container">
           <div>
             Appointments Loading...
