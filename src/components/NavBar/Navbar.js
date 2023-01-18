@@ -58,8 +58,8 @@ const NavBar = (props) => {
               <Offcanvas.Body className="position-relative">
 
                 <Nav className="justify-content-end flex-grow-1">
-                  <Nav.Link className="hover_effect ps-2" href="/ReservationPage">My Reservations</Nav.Link>
-                  <Nav.Link className="hover_effect ps-2" href="#action2">Add Reservation</Nav.Link>
+                  <Nav.Link className="hover_effect ps-2" href="/AppointmentsPage">My Appointments</Nav.Link>
+                  <Nav.Link className="hover_effect ps-2" href="#action2">Add Appointment</Nav.Link>
                   <Nav.Link className="hover_effect ps-2" href="/AddItem">Add Item</Nav.Link>
                   <Nav.Link className="hover_effect ps-2" href="/DeleteItem">Delete Item</Nav.Link>
 

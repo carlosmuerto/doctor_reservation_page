@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-const BASEURL = 'http://localhost:3000';
-
-const DIR = '/doctors';
+const BASEURL = 'http://localhost:3000/appointments';
 
 const options = {
   headers: {
@@ -19,14 +17,14 @@ const fetch = async (authorization) => {
     },
   };
 
-  const answer = await axios.get(BASEURL + DIR, CurrentUserOptions);
-  const doctors = answer.data;
+  const answer = await axios.get(BASEURL, CurrentUserOptions);
+  const appointments = answer.data;
 
-  return doctors;
+  return appointments;
 };
 
-const DoctorsAPI = {
+const AppointmentsAPI = {
   fetch,
 };
 
-export default DoctorsAPI;
+export default AppointmentsAPI;
