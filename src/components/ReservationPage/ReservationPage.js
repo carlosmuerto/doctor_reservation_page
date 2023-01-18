@@ -1,16 +1,9 @@
 import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
 import NavBar from '../NavBar/Navbar';
-// import { loadState } from '../../redux/localStorage/storage';
-// import * as CurrentUserSlice from '../../redux/Auth/CurrentUserSlice';
 
 function Reservation() {
-  // const dispatch = useDispatch();
-
   useEffect(() => {
-    // dispatch(
-    //   CurrentUserSlice.currentUser(loadState()),
-    // );
+
   });
 
   return (

@@ -4,11 +4,11 @@ function ItemsList(props) {
   const { data } = props;
 
   return (
-    <>
+    <div className="">
       <p>{data.name}</p>
       <p>{data.specialization}</p>
       <img src={data.photo} alt={data.name} className="img_container" />
-    </>
+    </div>
   );
 }
 
