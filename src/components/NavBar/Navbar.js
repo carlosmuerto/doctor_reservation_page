@@ -24,15 +24,15 @@ const NavBar = (props) => {
     if (localStorageData !== null) {
       try {
         // eslint-disable-next-line no-console
-        console.log(localStorageData.token);
+        // console.log('Login State:', localStorageData.role);
       } catch {
         // eslint-disable-next-line no-console
-        console.log('Login first please');
+        // console.log('Login first please');
         navigate('/loginPage');
       }
     } else {
       // eslint-disable-next-line no-console
-      console.log('Login first please');
+      // console.log('Login first please');
       navigate('/loginPage');
     }
   }, [navigate]);

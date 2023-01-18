@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -5,13 +6,14 @@ import loadingStatus from '../../../redux/reduxConst';
 import NavBar from '../../NavBar/Navbar';
 import * as DoctorsSlice from '../../../redux/Doctors/DoctorsSlice';
 
-function Details() {
+function Appointments() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const doctors = useSelector((store) => store.doctors);
   const auth = useSelector((store) => store.Auth);
   const location = useLocation();
   const { state } = location;
+  const data = state.AppointmentData;
 
   useEffect(() => {
     if (auth.loading === loadingStatus.succeeded && doctors.loading !== loadingStatus.succeeded) {
@@ -23,17 +25,17 @@ function Details() {
 
   useEffect(() => {
     if (doctors.loading === loadingStatus.idle && auth.loading === loadingStatus.idle) {
-      navigate('/MainPage');
+      navigate('/AppointmentsPage');
     }
   }, [dispatch, auth, doctors, navigate]);
 
-  if (doctors.loading === loadingStatus.idle || auth.loading === loadingStatus.pending) {
+  if (doctors.loading !== loadingStatus.succeeded || auth.loading !== loadingStatus.succeeded) {
     return (
       <section className="margin_top">
-        <NavBar name="Details Page" />
+        <NavBar name="Appointments Page" />
         <div className="container text-center">
           <div>
-            Doctors Loading...
+            Loading...
             <div className="spinner-border text-secondary" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
@@ -44,8 +46,7 @@ function Details() {
   }
 
   // eslint-disable-next-line prefer-destructuring
-  const doctor = doctors.list.filter((doc) => doc.id === state.doc_id)[0];
-  console.log(doctor);
+  const doctor = doctors.list.filter((doc) => doc.id === data.doctor_id)[0];
 
   return (
     <section className="margin_top">
@@ -53,16 +54,29 @@ function Details() {
 
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-8 col-sm-2">
-            <img src={doctor.photo} alt={doctor.name} className="img-fluid" />
+          <div className="col-8 col-sm-2 my_border">
+            <img src={doctor.photo} alt={doctor.photo} />
           </div>
           <div className="col-8 col-sm-10">
             <div className="row">
-              <div className="col-12">
-                <h1>{doctor.name}</h1>
+              <div className="col-12 my_border">
+                <h1>
+                  Doctor:
+                  {' '}
+                  {doctor.name}
+                </h1>
+                <p>
+                  Date:
+                  {' '}
+                  {data.datetime_of_appointment}
+                </p>
               </div>
-              <div className="col-12">
-                <h3>{doctor.specialization}</h3>
+              <div className="col-12 my_border">
+                <h3>
+                  Description:
+                  {' '}
+                  {data.description}
+                </h3>
               </div>
               {
                 auth.user.role === 'admin'
@@ -77,7 +91,7 @@ function Details() {
           </div>
           <div className="col-8 col-sm-10">
             <div className="row">
-              <div className="col-12">
+              <div className="col-12 my_border">
                 <h2>My Appointment</h2>
               </div>
             </div>
@@ -89,4 +103,4 @@ function Details() {
   );
 }
 
-export default Details;
+export default Appointments;

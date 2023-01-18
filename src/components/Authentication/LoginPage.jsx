@@ -24,7 +24,7 @@ const LoginPage = () => {
       try {
         if (localStorageData.token) {
           // eslint-disable-next-line no-console
-          console.log('You are already login');
+          console.log('Remember LOGOUT of your account');
           navigate('/MainPage');
         }
       } catch {
