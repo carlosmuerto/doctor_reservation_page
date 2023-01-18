@@ -19,7 +19,7 @@ function Appointments() {
         AuthSlice.load(loadLocalStorage()),
       );
     }
-  }, [dispatch, auth]);
+  }, [dispatch, auth, appointments]);
 
   useEffect(() => {
     if (auth.loading === loadingStatus.succeeded) {

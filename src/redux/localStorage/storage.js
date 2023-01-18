@@ -7,10 +7,8 @@ const loadLocalStorage = () => {
     const serializedData = localStorage.getItem(LOCAL_STORAGE_NAME);
 
     if (serializedData === null) {
-      // console.log('Local Storage null');
       return null;
     }
-    // console.log('Local Storage Loaded');
     const data = JSON.parse(serializedData);
     let user = {};
     user = data;
