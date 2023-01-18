@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -18,6 +18,14 @@ const NavBar = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.Auth.user);
+
+  useEffect(() => {
+    if (loadLocalStorage() === null) {
+      // eslint-disable-next-line no-console
+      console.log('Login first please');
+      navigate('/loginPage');
+    }
+  }, [navigate]);
 
   const logOutOnClick = async () => {
     dispatch(
