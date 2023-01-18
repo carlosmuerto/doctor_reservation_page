@@ -23,6 +23,7 @@ function Appointments() {
     }
   }, [dispatch, auth, doctors]);
 
+  // If Reload the page, this use Effect will send the user to the Appointments list
   useEffect(() => {
     if (doctors.loading === loadingStatus.idle && auth.loading === loadingStatus.idle) {
       navigate('/AppointmentsPage');
@@ -50,7 +51,7 @@ function Appointments() {
 
   return (
     <section className="margin_top">
-      <NavBar name="Back" />
+      <NavBar name="Back" goto="/AppointmentsPage" />
 
       <div className="container">
         <div className="row justify-content-center">

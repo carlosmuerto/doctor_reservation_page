@@ -21,6 +21,7 @@ function Details() {
     }
   }, [dispatch, auth, doctors]);
 
+  // If Reload the page, this use Effect will send the user to the Main Page
   useEffect(() => {
     if (doctors.loading === loadingStatus.idle && auth.loading === loadingStatus.idle) {
       navigate('/MainPage');

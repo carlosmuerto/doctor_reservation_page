@@ -14,7 +14,7 @@ import '../../styles/Navbar.scss';
 import { loadLocalStorage } from '../../redux/localStorage/storage';
 
 const NavBar = (props) => {
-  const { name } = props;
+  const { name, goto } = props;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.Auth.user);
@@ -23,16 +23,11 @@ const NavBar = (props) => {
     const localStorageData = loadLocalStorage();
     if (localStorageData !== null) {
       try {
-        // eslint-disable-next-line no-console
         // console.log('Login State:', localStorageData.role);
       } catch {
-        // eslint-disable-next-line no-console
-        // console.log('Login first please');
         navigate('/loginPage');
       }
     } else {
-      // eslint-disable-next-line no-console
-      // console.log('Login first please');
       navigate('/loginPage');
     }
   }, [navigate]);
@@ -53,7 +48,11 @@ const NavBar = (props) => {
 
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 
-            <Navbar.Brand href="/MainPage">{name}</Navbar.Brand>
+            {
+              goto
+                ? <Navbar.Brand href={goto}>Back</Navbar.Brand>
+                : <Navbar.Brand href="/MainPage">{name}</Navbar.Brand>
+            }
 
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -155,6 +154,7 @@ const NavBar = (props) => {
 
 NavBar.propTypes = {
   name: PropTypes.string,
+  goto: PropTypes.string,
 }.isRequired;
 
 export default NavBar;
