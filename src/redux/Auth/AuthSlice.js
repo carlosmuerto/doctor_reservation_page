@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import AuthAPI from '../RoRAPI/Auth';
 import loadingStatus from '../reduxConst';
+import CheckUser from '../RoRAPI/CurrentUser';
+import { deleteLocalStorage, saveLocalStorage } from '../localStorage/storage';
 
 // actions CONSTANTS
 const ACTION_PREPEND = 'API/Auth';
@@ -15,6 +17,11 @@ const initialState = {
     role: '',
   },
 };
+
+const load = createAsyncThunk(
+  `${ACTION_PREPEND}/LOAD`,
+  async (user) => CheckUser.currentUser(user),
+);
 
 const logIn = createAsyncThunk(
   `${ACTION_PREPEND}/LOGIN`,
@@ -55,6 +62,8 @@ const AuthSlice = createSlice({
           role,
         };
 
+        saveLocalStorage(userData);
+
         state.user = userData;
       })
       .addCase(logIn.rejected, (state) => {
@@ -64,30 +73,64 @@ const AuthSlice = createSlice({
       .addCase(signUp.pending, (state) => {
         state.loading = loadingStatus.pending;
       })
-      .addCase(signUp.fulfilled, (state, action) => {
-        state.loading = loadingStatus.succeeded;
-
-        const { email, name, role } = action.payload.data;
-
-        const userData = {
-          userName: name,
-          eMail: email,
-          token: '',
-          role,
-        };
-
-        state.user = userData;
+      .addCase(signUp.fulfilled, (state) => {
+        state.loading = loadingStatus.idle;
+        state.user = initialState.user;
+        deleteLocalStorage();
       })
       .addCase(signUp.rejected, (state) => {
         state.loading = loadingStatus.failed;
       })
       // /logout
-      .addCase(logOut.pending, () => {})
+      .addCase(logOut.pending, () => { })
       .addCase(logOut.fulfilled, (state) => {
         state.loading = loadingStatus.idle;
         state.user = initialState.user;
+        deleteLocalStorage();
       })
-      .addCase(logOut.rejected, () => {});
+      .addCase(logOut.rejected, () => { })
+      // /load
+      .addCase(load.pending, (state, action) => {
+        const {
+          userName,
+          eMail,
+          token,
+          role,
+        } = action.meta.arg;
+
+        if (userName && eMail && token && role) {
+          const userData = {
+            userName,
+            eMail,
+            token,
+            role,
+          };
+
+          state.loading = loadingStatus.succeeded;
+          state.user = userData;
+        } else {
+          state.loading = loadingStatus.pending;
+        }
+      })
+      .addCase(load.fulfilled, (state, action) => {
+        state.loading = loadingStatus.succeeded;
+
+        const {
+          email, name, role,
+        } = action.payload;
+
+        const userData = {
+          userName: name,
+          eMail: email,
+          token: action.payload.token,
+          role,
+        };
+
+        state.user = userData;
+      })
+      .addCase(load.rejected, (state) => {
+        state.loading = loadingStatus.failed;
+      });
   },
 });
 
@@ -98,6 +141,7 @@ export {
   logIn,
   signUp,
   logOut,
+  load,
 };
 
 export default reducer;
