@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ItemsList from '../DoctorsData/ItemObject';
 import NavBar from '../NavBar/Navbar';
-import * as CurrentUser from '../../redux/Auth/CurrentUserSlice';
+import * as AuthSlice from '../../redux/Auth/AuthSlice';
 import { loadLocalStorage } from '../../redux/localStorage/storage';
 import * as DoctorsSlice from '../../redux/Doctors/DoctorsSlice';
 import loadingStatus from '../../redux/reduxConst';
@@ -17,29 +17,30 @@ import loadingStatus from '../../redux/reduxConst';
 const MainPage = () => {
   const dispatch = useDispatch();
   const doctors = useSelector((store) => store.doctors);
-  const user = useSelector((store) => store.User.user);
-  const UserLoading = useSelector((store) => store.User.loading);
+  const auth = useSelector((store) => store.Auth);
 
   useEffect(() => {
-    dispatch(
-      CurrentUser.currentUser(loadLocalStorage()),
-    );
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (UserLoading === loadingStatus.succeeded) {
+    if (auth.loading !== loadingStatus.succeeded) {
       dispatch(
-        DoctorsSlice.fetch(user),
+        AuthSlice.load(loadLocalStorage()),
       );
     }
-  }, [dispatch, user, UserLoading]);
+  }, [dispatch, auth]);
+
+  useEffect(() => {
+    if (auth.loading === loadingStatus.succeeded) {
+      dispatch(
+        DoctorsSlice.fetch(auth.user),
+      );
+    }
+  }, [dispatch, auth]);
 
   return (
     <>
       <section className="Splash_container " />
 
       <div>
-        <NavBar name={`Welcome ${user.userName}`} />
+        <NavBar name={`Welcome ${auth.user.userName}`} />
 
         <Swiper
           effect="cards"

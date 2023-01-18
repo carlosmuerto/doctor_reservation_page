@@ -1,43 +1,38 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { loadLocalStorage } from '../../../redux/localStorage/storage';
 import loadingStatus from '../../../redux/reduxConst';
 import NavBar from '../../NavBar/Navbar';
 import * as DoctorsSlice from '../../../redux/Doctors/DoctorsSlice';
-import * as CurrentUser from '../../../redux/Auth/CurrentUserSlice';
 
 function Details() {
   const dispatch = useDispatch();
   const doctors = useSelector((store) => store.doctors);
-  let doctor = null;
-  const user = useSelector((store) => store.User.user);
-  const UserLoading = useSelector((store) => store.User.loading);
+  const auth = useSelector((store) => store.Auth);
   const location = useLocation();
   const { state } = location;
 
   useEffect(() => {
-    dispatch(
-      CurrentUser.currentUser(loadLocalStorage()),
-    );
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (UserLoading === loadingStatus.succeeded && doctors.loading !== loadingStatus.succeeded) {
+    if (auth.loading === loadingStatus.succeeded && doctors.loading !== loadingStatus.succeeded) {
       dispatch(
-        DoctorsSlice.fetch(user),
+        DoctorsSlice.fetch(auth.user),
       );
     }
-  }, [dispatch, user, UserLoading, doctors]);
+  }, [dispatch, auth, doctors]);
 
-  if (doctors.loading !== loadingStatus.succeeded) {
+  if (doctors.loading !== loadingStatus.succeeded || auth.loading !== loadingStatus.succeeded) {
     return (
-      <div>Doctor is Loading</div>
+      <section className="margin_top">
+        <NavBar name="Details Page" />
+        <div className="container">
+          <div>Doctor is Loading</div>
+        </div>
+      </section>
     );
   }
 
   // eslint-disable-next-line prefer-destructuring
-  doctor = doctors.list.filter((doc) => doc.id === state.doc_id)[0];
+  const doctor = doctors.list.filter((doc) => doc.id === state.doc_id)[0];
 
   return (
     <section className="margin_top">
@@ -57,7 +52,7 @@ function Details() {
                 <h3>{doctor.specialization}</h3>
               </div>
               {
-                UserLoading === loadingStatus.succeeded && user.role === 'admin'
+                auth.user.role === 'admin'
                   ? (
                     <div className="col-12">
                       <button type="button" className="btn btn-danger">Danger</button>

@@ -9,7 +9,9 @@ const options = {
   },
 };
 
-const currentUser = async (authorization) => {
+const currentUser = async (userStored) => {
+  const authorization = userStored.token;
+
   const CurrentUserOptions = {
     headers: {
       ...options.headers,
