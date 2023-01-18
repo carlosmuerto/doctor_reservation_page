@@ -21,9 +21,16 @@ const LoginPage = () => {
   useEffect(() => {
     const localStorageData = loadLocalStorage();
     if (localStorageData !== null) {
-      // eslint-disable-next-line no-console
-      console.log('You are already login');
-      navigate('/MainPage');
+      try {
+        if (localStorageData.token) {
+          // eslint-disable-next-line no-console
+          console.log('You are already login');
+          navigate('/MainPage');
+        }
+      } catch {
+        // eslint-disable-next-line no-console
+        console.log('First LogIn please');
+      }
     }
   }, [navigate]);
 

@@ -15,18 +15,9 @@ import * as DoctorsSlice from '../../redux/Doctors/DoctorsSlice';
 import loadingStatus from '../../redux/reduxConst';
 
 const MainPage = () => {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const doctors = useSelector((store) => store.doctors);
   const auth = useSelector((store) => store.Auth);
-
-  // useEffect(() => {
-  //   if (auth.loading === loadingStatus.failed) {
-  //     // eslint-disable-next-line no-console
-  //     console.log('Login you user please!');
-  //     navigate('/loginPage');
-  //   }
-  // }, [dispatch, auth, navigate]);
 
   useEffect(() => {
     if (auth.loading !== loadingStatus.succeeded && auth.loading !== loadingStatus.failed) {

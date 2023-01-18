@@ -20,7 +20,17 @@ const NavBar = (props) => {
   const user = useSelector((store) => store.Auth.user);
 
   useEffect(() => {
-    if (loadLocalStorage() === null) {
+    const localStorageData = loadLocalStorage();
+    if (localStorageData !== null) {
+      try {
+        // eslint-disable-next-line no-console
+        console.log(localStorageData.token);
+      } catch {
+        // eslint-disable-next-line no-console
+        console.log('Login first please');
+        navigate('/loginPage');
+      }
+    } else {
       // eslint-disable-next-line no-console
       console.log('Login first please');
       navigate('/loginPage');
