@@ -29,23 +29,30 @@ function Appointments() {
     }
   }, [dispatch, auth]);
 
+  // Appointment empty
   if (appointments.list.length === 0 && appointments.loading === loadingStatus.succeeded) {
     return (
       <section className="margin_top">
         <NavBar name="Back" />
-        <div className="container">
+        <div className="container text-center">
           <p>You don&apos;t have any Appointments</p>
         </div>
       </section>
     );
   }
 
+  // Appointment loading
   if (appointments.loading !== loadingStatus.succeeded || auth.loading !== loadingStatus.succeeded) {
     return (
       <section className="margin_top">
         <NavBar name="Details Page" />
         <div className="container">
-          <div>Appointments Loading...</div>
+          <div>
+            Appointments Loading...
+            <div className="spinner-border text-secondary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
         </div>
       </section>
     );

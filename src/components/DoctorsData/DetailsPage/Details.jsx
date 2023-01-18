@@ -24,8 +24,13 @@ function Details() {
     return (
       <section className="margin_top">
         <NavBar name="Details Page" />
-        <div className="container">
-          <div>Doctors Loading...</div>
+        <div className="container text-center">
+          <div>
+            Doctors Loading...
+            <div className="spinner-border text-secondary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
         </div>
       </section>
     );
