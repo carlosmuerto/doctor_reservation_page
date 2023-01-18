@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as AuthSlice from '../../redux/Auth/AuthSlice';
+import { loadLocalStorage } from '../../redux/localStorage/storage';
 import loadingStatus from '../../redux/reduxConst';
 
 const LoginPage = () => {
@@ -16,6 +17,15 @@ const LoginPage = () => {
       AuthSlice.logIn(values),
     );
   };
+
+  useEffect(() => {
+    const localStorageData = loadLocalStorage();
+    if (localStorageData !== null) {
+      // eslint-disable-next-line no-console
+      console.log('You are already login');
+      navigate('/MainPage');
+    }
+  }, [navigate]);
 
   useEffect(() => {
     if (loading === loadingStatus.succeeded) {
