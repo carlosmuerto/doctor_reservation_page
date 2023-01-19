@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASEURL = 'http://localhost:3000/users/current';
+const BASEURL = 'http://localhost:3000/appointments';
 
 const options = {
   headers: {
@@ -9,24 +9,22 @@ const options = {
   },
 };
 
-const currentUser = async (userStored) => {
-  const authorization = userStored.token;
-
+const fetch = async (authorization) => {
   const CurrentUserOptions = {
     headers: {
       ...options.headers,
       authorization,
     },
   };
+
   const answer = await axios.get(BASEURL, CurrentUserOptions);
-  const user = answer.data;
+  const appointments = answer.data;
 
-  user.token = authorization;
-  return user;
+  return appointments;
 };
 
-const CheckUser = {
-  currentUser,
+const AppointmentsAPI = {
+  fetch,
 };
 
-export default CheckUser;
+export default AppointmentsAPI;

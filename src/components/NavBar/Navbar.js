@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -17,7 +17,15 @@ const NavBar = (props) => {
   const { name } = props;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((store) => store.User.user);
+  const user = useSelector((store) => store.Auth.user);
+
+  useEffect(() => {
+    if (loadLocalStorage() === null) {
+      // eslint-disable-next-line no-console
+      console.log('Login first please');
+      navigate('/loginPage');
+    }
+  }, [navigate]);
 
   const logOutOnClick = async () => {
     dispatch(
@@ -58,8 +66,8 @@ const NavBar = (props) => {
               <Offcanvas.Body className="position-relative">
 
                 <Nav className="justify-content-end flex-grow-1">
-                  <Nav.Link className="hover_effect ps-2" href="/ReservationPage">My Reservations</Nav.Link>
-                  <Nav.Link className="hover_effect ps-2" href="#action2">Add Reservation</Nav.Link>
+                  <Nav.Link className="hover_effect ps-2" href="/AppointmentsPage">My Appointments</Nav.Link>
+                  <Nav.Link className="hover_effect ps-2" href="#action2">Add Appointment</Nav.Link>
                   {
                     user.role === 'admin'
                       ? <Nav.Link className="hover_effect ps-2" href="/AddItem">Add D</Nav.Link>

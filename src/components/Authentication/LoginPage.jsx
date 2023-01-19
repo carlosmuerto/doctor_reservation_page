@@ -3,8 +3,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as AuthSlice from '../../redux/Auth/AuthSlice';
-import * as CurrentUserSlice from '../../redux/Auth/CurrentUserSlice';
-
 import loadingStatus from '../../redux/reduxConst';
 
 const LoginPage = () => {
@@ -21,9 +19,6 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (loading === loadingStatus.succeeded) {
-      dispatch(
-        CurrentUserSlice.currentUser(user),
-      );
       navigate('/MainPage');
     }
   }, [dispatch, loading, navigate, user]);
