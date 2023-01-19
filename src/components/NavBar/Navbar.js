@@ -18,6 +18,7 @@ const NavBar = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.Auth.user);
+  const localStorageData = loadLocalStorage();
 
   useEffect(() => {
     const localStorageData = loadLocalStorage();
@@ -30,7 +31,7 @@ const NavBar = (props) => {
     } else {
       navigate('/loginPage');
     }
-  }, [navigate]);
+  }, [navigate, localStorageData]);
 
   const logOutOnClick = async () => {
     dispatch(
@@ -76,7 +77,7 @@ const NavBar = (props) => {
 
                 <Nav className="justify-content-end flex-grow-1">
                   <Nav.Link className="hover_effect ps-2" href="/AppointmentsPage">My Appointments</Nav.Link>
-                  <Nav.Link className="hover_effect ps-2" href="#action2">Add Appointment</Nav.Link>
+                  <Nav.Link className="hover_effect ps-2" href="/AddAppointmentsForm">Add Appointment</Nav.Link>
                   <Nav.Link className="hover_effect ps-2" href="/AddItem">Add Item</Nav.Link>
                   <Nav.Link className="hover_effect ps-2" href="/DeleteItem">Delete Item</Nav.Link>
 

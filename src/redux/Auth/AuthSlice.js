@@ -16,6 +16,7 @@ const initialState = {
     token: '',
     role: '',
   },
+  alert: { green: [], red: [] },
 };
 
 const load = createAsyncThunk(
@@ -50,6 +51,8 @@ const AuthSlice = createSlice({
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.loading = loadingStatus.succeeded;
+        state.alert.green = ['Login Successfully'];
+        state.alert.red = [];
 
         const {
           email, name, role,
@@ -68,6 +71,8 @@ const AuthSlice = createSlice({
       })
       .addCase(logIn.rejected, (state) => {
         state.loading = loadingStatus.failed;
+        state.alert.green = [];
+        state.alert.red = ['Wrong email or password'];
       })
       // /signUp
       .addCase(signUp.pending, (state) => {
@@ -76,16 +81,22 @@ const AuthSlice = createSlice({
       .addCase(signUp.fulfilled, (state) => {
         state.loading = loadingStatus.idle;
         state.user = initialState.user;
+        state.alert.green = ['User created Successfully'];
+        state.alert.red = [];
         deleteLocalStorage();
       })
       .addCase(signUp.rejected, (state) => {
         state.loading = loadingStatus.failed;
+        state.alert.green = [];
+        state.alert.red = ['User and email cannot be registered.'];
       })
       // /logout
       .addCase(logOut.pending, () => { })
       .addCase(logOut.fulfilled, (state) => {
         state.loading = loadingStatus.idle;
         state.user = initialState.user;
+        state.alert.green = [];
+        state.alert.red = [];
         deleteLocalStorage();
       })
       .addCase(logOut.rejected, () => { })

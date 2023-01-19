@@ -46,7 +46,6 @@ function Details() {
 
   // eslint-disable-next-line prefer-destructuring
   const doctor = doctors.list.filter((doc) => doc.id === state.doc_id)[0];
-  console.log(doctor);
 
   return (
     <section className="margin_top">

@@ -8,7 +8,7 @@ import * as AppointmentsSlice from '../../redux/Appointments/AppointmentsSlice';
 import * as AuthSlice from '../../redux/Auth/AuthSlice';
 import { loadLocalStorage } from '../../redux/localStorage/storage';
 
-function Appointments() {
+const Appointments = () => {
   const appointments = useSelector((store) => store.Appointments);
   const auth = useSelector((store) => store.Auth);
   const dispatch = useDispatch();
@@ -101,6 +101,6 @@ function Appointments() {
 
     </section>
   );
-}
+};
 
 export default Appointments;

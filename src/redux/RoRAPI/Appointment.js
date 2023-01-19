@@ -1,6 +1,9 @@
 import axios from 'axios';
+import BASEURL from '../URL_API';
 
-const BASEURL = 'http://localhost:3000/appointments';
+// const BASEURL = 'http://localhost:3000';
+
+const DIRECTION = 'appointments';
 
 const options = {
   headers: {
@@ -17,7 +20,7 @@ const fetch = async (authorization) => {
     },
   };
 
-  const answer = await axios.get(BASEURL, CurrentUserOptions);
+  const answer = await axios.get(BASEURL + DIRECTION, CurrentUserOptions);
   const appointments = answer.data;
 
   return appointments;

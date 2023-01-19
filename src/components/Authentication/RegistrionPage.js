@@ -11,6 +11,8 @@ const RegistrionPage = () => {
 
   const user = useSelector((store) => store.Auth.user);
   const loading = useSelector((store) => store.Auth.loading);
+  const alertSucceess = useSelector((store) => store.Auth.alert.green);
+  const alertFail = useSelector((store) => store.Auth.alert.red);
 
   const onSubmit = async (values) => {
     dispatch(
@@ -63,6 +65,20 @@ const RegistrionPage = () => {
             <button type="submit" className="container-fluid btn btn-outline-secondary">Submit</button>
           </Form>
         </Formik>
+        {
+          alertSucceess.map((text) => (
+            <div key={text} className="alert alert-success text-center" role="alert">
+              <p key={text}>{text}</p>
+            </div>
+          ))
+        }
+        {
+          alertFail.map((text) => (
+            <div key={text} className="alert alert-danger text-center" role="alert">
+              <p>{text}</p>
+            </div>
+          ))
+        }
       </div>
     </>
   );
