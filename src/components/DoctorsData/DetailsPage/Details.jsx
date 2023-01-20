@@ -49,11 +49,7 @@ function Details() {
     dispatch(
       DoctorsSlice.Delete({ DoctorId: values.doctor.id, user: auth.user }),
     );
-    // window.location.reload(true);
-    // console.log(values, auth);
   };
-
-  console.log(alertFail);
 
   // eslint-disable-next-line prefer-destructuring
   const doctor = doctors.list.filter((doc) => doc.id === state.doc_id)[0];
