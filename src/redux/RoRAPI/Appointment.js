@@ -26,6 +26,7 @@ const fetch = async (authorization) => {
 };
 
 // Add new
+// eslint-disable-next-line no-unused-vars
 const AddNew = async (doctorId, description, time, authorization) => {
   const AuthorizedOptions = {
     headers: {
