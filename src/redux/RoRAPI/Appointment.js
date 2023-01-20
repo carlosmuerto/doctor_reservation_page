@@ -12,6 +12,7 @@ const options = {
   },
 };
 
+// Get all appointments list
 const fetch = async (authorization) => {
   const CurrentUserOptions = {
     headers: {
@@ -26,8 +27,29 @@ const fetch = async (authorization) => {
   return appointments;
 };
 
+// Add new
+const AddNew = async (doctorId, description, time, authorization) => {
+  const AuthorizedOptions = {
+    headers: {
+      ...options.headers,
+      authorization,
+    },
+  };
+
+  const res = await axios.post(`${BASEURL}appointments`, {
+    doctor_id: doctorId,
+    description,
+    datetime_of_appointment: time,
+  }, AuthorizedOptions);
+
+  const answer = res.data;
+  console.log('res:', res);
+  return answer;
+};
+
 const AppointmentsAPI = {
   fetch,
+  AddNew,
 };
 
 export default AppointmentsAPI;

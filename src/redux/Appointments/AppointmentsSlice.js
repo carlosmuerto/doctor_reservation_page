@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import loadingStatus from '../reduxConst';
 import AppointmentsAPI from '../RoRAPI/Appointment';
@@ -15,12 +16,20 @@ const fetch = createAsyncThunk(
   async ({ token }) => AppointmentsAPI.fetch(token),
 );
 
-const DoctorsSlice = createSlice({
+const Add = createAsyncThunk(
+  `${ACTION_PREPEND}/ADD`,
+  async ({
+    doctorId, description, time, user,
+  }) => AppointmentsAPI.AddNew(doctorId, description, time, user.token),
+);
+
+const AppointmentsSlice = createSlice({
   name: ACTION_PREPEND,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
+    // Get all appointments list
       .addCase(fetch.pending, (state) => {
         state.loading = loadingStatus.pending;
       })
@@ -31,15 +40,28 @@ const DoctorsSlice = createSlice({
       })
       .addCase(fetch.rejected, (state) => {
         state.loading = loadingStatus.failed;
+      })
+      // Add a new Appointment
+      .addCase(Add.pending, (state) => {
+        state.loading = loadingStatus.pending;
+      })
+      .addCase(Add.fulfilled, (state, action) => {
+        state.loading = loadingStatus.succeeded;
+
+        state.list = action.payload;
+      })
+      .addCase(Add.rejected, (state) => {
+        state.loading = loadingStatus.failed;
       });
   },
 });
 
-const { actions, reducer } = DoctorsSlice;
+const { actions, reducer } = AppointmentsSlice;
 
 export {
   actions,
   fetch,
+  Add,
 };
 
 export default reducer;
