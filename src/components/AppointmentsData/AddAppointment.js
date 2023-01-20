@@ -37,7 +37,6 @@ const AddAppointmentsForm = () => {
   };
 
   const onSubmit = async (values) => {
-    console.log(values);
     const resqObj = {
       ...values,
       time: `${values.dateIn} ${values.timeIn}`,
