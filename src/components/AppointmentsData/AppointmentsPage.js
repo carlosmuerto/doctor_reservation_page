@@ -12,7 +12,6 @@ const Appointments = () => {
   const appointments = useSelector((store) => store.Appointments);
   const auth = useSelector((store) => store.Auth);
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   useEffect(() => {
     if (auth.loading !== loadingStatus.succeeded && appointments.loading !== loadingStatus.succeeded) {
