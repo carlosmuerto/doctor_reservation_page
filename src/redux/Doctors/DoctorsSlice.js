@@ -11,6 +11,13 @@ const initialState = {
   alert: { green: [], red: [] },
 };
 
+const Add = createAsyncThunk(
+  `${ACTION_PREPEND}/ADD`,
+  async ({
+    data, user,
+  }) => DoctorsAPI.Add(data, user.token),
+);
+
 const fetch = createAsyncThunk(
   `${ACTION_PREPEND}/FETCH`,
   async ({ token }) => DoctorsAPI.fetch(token),
@@ -41,6 +48,23 @@ const DoctorsSlice = createSlice({
       .addCase(fetch.rejected, (state) => {
         state.loading = loadingStatus.failed;
       })
+      // Add a new Appointment
+      .addCase(Add.pending, (state) => {
+        state.loading = loadingStatus.pending;
+      })
+      .addCase(Add.fulfilled, (state) => {
+        state.loading = loadingStatus.succeeded;
+        state.alert.green = ['New Doctor created'];
+        state.alert.red = [];
+      })
+      .addCase(Add.rejected, (state, action) => {
+        state.loading = loadingStatus.failed;
+        state.alert.green = [];
+
+        // eslint-disable-next-line no-console
+        console.log(action);
+        state.alert.red = ['Your request cannot be processed'];
+      })
       // Delete doctor
       .addCase(Delete.pending, (state) => {
         state.loading = loadingStatus.pending;
@@ -66,6 +90,7 @@ export {
   actions,
   fetch,
   Delete,
+  Add,
 };
 
 export default reducer;
