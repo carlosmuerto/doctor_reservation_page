@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -14,10 +14,24 @@ import '../../styles/Navbar.scss';
 import { loadLocalStorage } from '../../redux/localStorage/storage';
 
 const NavBar = (props) => {
-  const { name } = props;
+  const { name, goto } = props;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.Auth.user);
+  const localStorageData = loadLocalStorage();
+
+  useEffect(() => {
+    const localStorageData = loadLocalStorage();
+    if (localStorageData !== null) {
+      try {
+        // console.log('Login State:', localStorageData.role);
+      } catch {
+        navigate('/loginPage');
+      }
+    } else {
+      navigate('/loginPage');
+    }
+  }, [navigate, localStorageData]);
 
   const logOutOnClick = async () => {
     dispatch(
@@ -35,7 +49,11 @@ const NavBar = (props) => {
 
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 
-            <Navbar.Brand href="/MainPage">{name}</Navbar.Brand>
+            {
+              goto
+                ? <Navbar.Brand href={goto}>Back</Navbar.Brand>
+                : <Navbar.Brand href="/MainPage">{name}</Navbar.Brand>
+            }
 
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -58,8 +76,8 @@ const NavBar = (props) => {
               <Offcanvas.Body className="position-relative">
 
                 <Nav className="justify-content-end flex-grow-1">
-                  <Nav.Link className="hover_effect ps-2" href="/ReservationPage">My Reservations</Nav.Link>
-                  <Nav.Link className="hover_effect ps-2" href="#action2">Add Reservation</Nav.Link>
+                  <Nav.Link className="hover_effect ps-2" href="/AppointmentsPage">My Appointments</Nav.Link>
+                  <Nav.Link className="hover_effect ps-2" href="/AddAppointmentsForm">Add Appointment</Nav.Link>
                   <Nav.Link className="hover_effect ps-2" href="/AddItem">Add Item</Nav.Link>
                   <Nav.Link className="hover_effect ps-2" href="/DeleteItem">Delete Item</Nav.Link>
 
@@ -137,6 +155,7 @@ const NavBar = (props) => {
 
 NavBar.propTypes = {
   name: PropTypes.string,
+  goto: PropTypes.string,
 }.isRequired;
 
 export default NavBar;

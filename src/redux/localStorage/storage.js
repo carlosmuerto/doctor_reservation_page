@@ -7,10 +7,8 @@ const loadLocalStorage = () => {
     const serializedData = localStorage.getItem(LOCAL_STORAGE_NAME);
 
     if (serializedData === null) {
-      console.log('Local Storage null');
       return null;
     }
-    console.log('Local Storage Loaded');
     const data = JSON.parse(serializedData);
     let user = {};
     user = data;
@@ -34,7 +32,7 @@ const saveLocalStorage = (userOBJ) => {
 const deleteLocalStorage = () => {
   try {
     console.log('Delete user from the localStorage');
-    const user = 'Come back soon!';
+    const user = null;
     localStorage.setItem(LOCAL_STORAGE_NAME, user);
   } catch (error) {
     console.log('Error deleting information from the Local Storage:', error);

@@ -1,0 +1,67 @@
+/* eslint-disable max-len */
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import loadingStatus from '../reduxConst';
+import AppointmentsAPI from '../RoRAPI/Appointment';
+
+// actions CONSTANTS
+const ACTION_PREPEND = 'API/Appointments';
+
+const initialState = {
+  loading: loadingStatus.idle,
+  list: [],
+};
+
+const fetch = createAsyncThunk(
+  `${ACTION_PREPEND}/FETCH`,
+  async ({ token }) => AppointmentsAPI.fetch(token),
+);
+
+const Add = createAsyncThunk(
+  `${ACTION_PREPEND}/ADD`,
+  async ({
+    doctorId, description, time, user,
+  }) => AppointmentsAPI.AddNew(doctorId, description, time, user.token),
+);
+
+const AppointmentsSlice = createSlice({
+  name: ACTION_PREPEND,
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+    // Get all appointments list
+      .addCase(fetch.pending, (state) => {
+        state.loading = loadingStatus.pending;
+      })
+      .addCase(fetch.fulfilled, (state, action) => {
+        state.loading = loadingStatus.succeeded;
+
+        state.list = action.payload;
+      })
+      .addCase(fetch.rejected, (state) => {
+        state.loading = loadingStatus.failed;
+      })
+      // Add a new Appointment
+      .addCase(Add.pending, (state) => {
+        state.loading = loadingStatus.pending;
+      })
+      .addCase(Add.fulfilled, (state, action) => {
+        state.loading = loadingStatus.succeeded;
+
+        state.list = action.payload;
+      })
+      .addCase(Add.rejected, (state) => {
+        state.loading = loadingStatus.failed;
+      });
+  },
+});
+
+const { actions, reducer } = AppointmentsSlice;
+
+export {
+  actions,
+  fetch,
+  Add,
+};
+
+export default reducer;

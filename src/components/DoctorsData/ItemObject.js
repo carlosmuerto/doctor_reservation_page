@@ -4,6 +4,7 @@ function ItemsList(props) {
   const { data } = props;
 
   return (
+
     <>
       <img src={data.photo} alt={data.name} className="doctors_img" />
       <p className="doctors_name">{data.name}</p>
@@ -12,6 +13,7 @@ function ItemsList(props) {
         {' '}
       </p>
     </>
+
   );
 }
 

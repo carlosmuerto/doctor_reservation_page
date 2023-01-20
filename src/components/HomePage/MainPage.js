@@ -17,7 +17,7 @@ const MainPage = () => {
   const auth = useSelector((store) => store.Auth);
 
   useEffect(() => {
-    if (auth.loading !== loadingStatus.succeeded) {
+    if (auth.loading !== loadingStatus.succeeded && auth.loading !== loadingStatus.failed) {
       dispatch(
         AuthSlice.load(loadLocalStorage()),
       );
@@ -55,6 +55,20 @@ const MainPage = () => {
       document.querySelector('.left').classList.remove('disable');
     }
   };
+
+  if (doctors.loading === loadingStatus.pending || auth.loading === loadingStatus.pending) {
+    return (
+      <>
+        <section className="Splash_container d-flex align-items-center placeholder-wave background_blur" />
+        <div className="position-absolute top-50 start-50 translate-middle">
+          <div className="spinner-border text-secondary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </>
+    );
+  }
+
 
   return (
     <>

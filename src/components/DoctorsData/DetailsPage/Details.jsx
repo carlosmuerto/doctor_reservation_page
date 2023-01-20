@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import loadingStatus from '../../../redux/reduxConst';
 import NavBar from '../../NavBar/Navbar';
 import Col from 'react-bootstrap/Col';
@@ -12,6 +12,7 @@ import * as DoctorsSlice from '../../../redux/Doctors/DoctorsSlice';
 import './Details.css';
 
 function Details() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const doctors = useSelector((store) => store.doctors);
   const auth = useSelector((store) => store.Auth);
@@ -26,12 +27,24 @@ function Details() {
     }
   }, [dispatch, auth, doctors]);
 
-  if (doctors.loading !== loadingStatus.succeeded || auth.loading !== loadingStatus.succeeded) {
+  // If Reload the page, this use Effect will send the user to the Main Page
+  useEffect(() => {
+    if (doctors.loading === loadingStatus.idle && auth.loading === loadingStatus.idle) {
+      navigate('/MainPage');
+    }
+  }, [dispatch, auth, doctors, navigate]);
+
+  if (doctors.loading === loadingStatus.idle || auth.loading === loadingStatus.pending) {
     return (
       <section className="margin_top">
         <NavBar name="Details Page" />
-        <div className="container">
-          <div>Doctor is Loading</div>
+        <div className="container text-center">
+          <div>
+            Doctors Loading...
+            <div className="spinner-border text-secondary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
         </div>
       </section>
     );
@@ -41,8 +54,10 @@ function Details() {
   const doctor = doctors.list.filter((doc) => doc.id === state.doc_id)[0];
 
   return (
+
     <>
       <NavBar name="Details Page" />
+
 
     
               <Container>
