@@ -2,8 +2,6 @@
 import axios from 'axios';
 import BASEURL from '../URL_API';
 
-// const BASEURL = 'http://localhost:3000';
-
 const options = {
   headers: {
     accept: 'application/json',
