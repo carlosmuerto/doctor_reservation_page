@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
@@ -78,7 +79,7 @@ function Details() {
                     </tr>
                     <tr>
                       <th>Appointment</th>
-                      <td className="d-flex justify-content-end btn btn-success">Book Appointment</td>
+                      <td className="d-flex justify-content-end btn btn-success"><NavLink to="/AddAppointmentsForm">Book Appointment</NavLink></td>
                     </tr>
                   </tbody>
                 </Table>
