@@ -3,7 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import loadingStatus from '../../../redux/reduxConst';
 import NavBar from '../../NavBar/Navbar';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Card from 'react-bootstrap/Card';
+import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
 import * as DoctorsSlice from '../../../redux/Doctors/DoctorsSlice';
+import './Details.css';
 
 function Details() {
   const dispatch = useDispatch();
@@ -35,45 +41,42 @@ function Details() {
   const doctor = doctors.list.filter((doc) => doc.id === state.doc_id)[0];
 
   return (
-    <section className="margin_top">
+    <>
       <NavBar name="Details Page" />
 
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-8 col-sm-2">
-            <img src={doctor.photo} alt={doctor.name} className="img-fluid" />
-          </div>
-          <div className="col-8 col-sm-10">
-            <div className="row">
-              <div className="col-12">
-                <h1>{doctor.name}</h1>
-              </div>
-              <div className="col-12">
-                <h3>{doctor.specialization}</h3>
-              </div>
-              {
-                auth.user.role === 'admin'
-                  ? (
-                    <div className="col-12">
-                      <button type="button" className="btn btn-danger">Danger</button>
-                    </div>
-                  )
-                  : null
-              }
-            </div>
-          </div>
-          <div className="col-8 col-sm-10">
-            <div className="row">
-              <div className="col-12">
-                <h2>My Appointment</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    
+              <Container>
+          <Row className="d-flex">
+            <Col xs={12} md={5}>
+              <Card className="mb-4 p-3">
+                <Card.Img variant="top" src={doctor.photo} alt="doctor" />
+              </Card>
+            </Col>
 
-    </section>
+            <Col xs={12} md={5}>
+              <Card.Body>
+                <Card.Title><h5>{doctor.name}</h5></Card.Title>
+                <div>
+                  <Table striped bordered hover responsive="sm">
+                    <tbody>
+                      <tr>
+                        <th>Specialization</th>
+                        <td>{doctor.specialization}</td>
+                      </tr>
+                      <tr>
+                        <th>Appointment</th>
+                        <td className="d-flex justify-content-end btn btn-success">Book Appointment</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </div>
+              </Card.Body>
+            </Col>
+          </Row>
+        </Container>
+      
+    </>
   );
-}
+};
 
 export default Details;

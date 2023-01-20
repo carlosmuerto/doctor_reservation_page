@@ -80,25 +80,24 @@ const MainPage = () => {
             </button>
           </div>
           <div className="cover_div">
-            <div className="scroll_content" >
-            {doctors.list.map((data) => (
-              <div key={data.name} className="doctors_div">
-                <Link to="/Details" state={{ doc_id: data.id }}>
-                  <ItemsList data={data} id={data.name} />
-                </Link>
-              </div>
-            ))}
+            <div className="scroll_content">
+              {doctors.list.map((data) => (
+                <div key={data.name} className="doctors_div">
+                  <Link to="/Details" state={{ doc_id: data.id }}>
+                    <ItemsList data={data} id={data.name} />
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
           <div>
-          <button type="button" className="arrow right" onClick={scrollRight}>
-            <BiRightArrow />
-          </button>
-        </div>
+            <button type="button" className="arrow right" onClick={scrollRight}>
+              <BiRightArrow />
+            </button>
           </div>
         </div>
-        
-      
+      </div>
+
     </>
 
   );
