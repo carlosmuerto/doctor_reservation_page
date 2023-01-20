@@ -50,11 +50,11 @@ const MainPage = () => {
         >
 
           {doctors.list.map((data) => (
-            <SwiperSlide key={data.name} className="">
+            <SwiperSlide key={`${data.id}_${data.name}`} className="">
 
               <Link to="/Details" state={{ doc_id: data.id }}>
 
-                <ItemsList data={data} id={data.name} />
+                <ItemsList data={data} id={`${data.id}_${data.name}`} />
 
               </Link>
 

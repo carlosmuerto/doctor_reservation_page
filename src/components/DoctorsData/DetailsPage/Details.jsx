@@ -56,7 +56,7 @@ function Details() {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-8 col-sm-2">
-            <img src={doctor.photo} alt={doctor.name} className="img-fluid" />
+            <img src={`http://localhost:3000/${doctor.photo_dir}`} alt={doctor.name} className="img-fluid" />
           </div>
           <div className="col-8 col-sm-10">
             <div className="row">
