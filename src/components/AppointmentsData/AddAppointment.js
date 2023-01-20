@@ -37,8 +37,14 @@ const AddAppointmentsForm = () => {
   };
 
   const onSubmit = async (values) => {
+    console.log(values);
+    const resqObj = {
+      ...values,
+      time: `${values.dateIn} ${values.timeIn}`,
+    };
+
     dispatch(
-      AppointmentsSlice.Add({ ...values, user: auth.user }),
+      AppointmentsSlice.Add({ ...resqObj, user: auth.user }),
     );
   };
 
@@ -57,8 +63,8 @@ const AddAppointmentsForm = () => {
             ))}
           </Field>
           <Field name="description" type="text" placeholder="Description" className="form-control" required />
-          <Field name="date" type="date" placeholder="Date of the appointment" className="form-control" required />
-          <Field name="time" type="time" placeholder="Time of the appointment" className="form-control" required />
+          <Field name="dateIn" type="date" placeholder="Date of the appointment" className="form-control" required />
+          <Field name="timeIn" type="time" placeholder="Time of the appointment" className="form-control" required />
           <button type="submit" className="container-fluid btn btn-outline-secondary">Submit</button>
         </Form>
       </Formik>
