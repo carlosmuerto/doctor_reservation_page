@@ -29,6 +29,13 @@ const Appointments = () => {
     }
   }, [dispatch, auth]);
 
+  const handledelete = (values) => {
+    dispatch(
+      AppointmentsSlice.Delete({ AppointmentId: values.data.id, user: auth.user }),
+    );
+    window.location.reload(true);
+  };
+
   if (appointments.list.length === 0 && appointments.loading === loadingStatus.succeeded) {
     return (
       <section className="margin_top">
@@ -63,40 +70,46 @@ const Appointments = () => {
       <h1>All my appointments:</h1>
 
       {appointments.list.map((data) => (
-        <Link key={data.id} to="/AppointmentDetails" state={{ AppointmentData: data }}>
-          <div className="my_border">
-            <p>
-              ID:
-              {' '}
-              {data.id}
-            </p>
+        <section key={data.id} className="my_border">
+          <Link to="/AppointmentDetails" state={{ AppointmentData: data }}>
+            <div>
+              <p>
+                ID:
+                {' '}
+                {data.id}
+              </p>
 
-            <p>
-              ID_doctor:
-              {' '}
-              {data.doctor_id}
-            </p>
+              <p>
+                ID_doctor:
+                {' '}
+                {data.doctor_id}
+              </p>
 
-            <p>
-              Description:
-              {' '}
-              {data.description}
-            </p>
+              <p>
+                Description:
+                {' '}
+                {data.description}
+              </p>
 
-            <p>
-              Appointment Date:
-              {' '}
-              {data.datetime_of_appointment}
-            </p>
+              <p>
+                Appointment Date:
+                {' '}
+                {data.datetime_of_appointment}
+              </p>
 
-            <p>
-              This appointment was created:
-              {' '}
-              {data.created_at}
-            </p>
+              <p>
+                This appointment was created:
+                {' '}
+                {data.created_at}
+              </p>
+            </div>
+          </Link>
+
+          <div className="col-12">
+            <input type="button" className="btn btn-danger" onClick={() => handledelete({ data })} value="Danger" />
           </div>
 
-        </Link>
+        </section>
       ))}
 
     </section>
