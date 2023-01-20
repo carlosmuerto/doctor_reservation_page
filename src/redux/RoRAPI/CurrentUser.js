@@ -1,6 +1,7 @@
 import axios from 'axios';
+import BASEURL from '../URL_API';
 
-const BASEURL = 'http://localhost:3000/users/current';
+const DIRECTION = 'users/current';
 
 const options = {
   headers: {
@@ -18,7 +19,7 @@ const currentUser = async (userStored) => {
       authorization,
     },
   };
-  const answer = await axios.get(BASEURL, CurrentUserOptions);
+  const answer = await axios.get(BASEURL + DIRECTION, CurrentUserOptions);
   const user = answer.data;
 
   user.token = authorization;

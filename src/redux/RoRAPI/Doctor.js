@@ -1,8 +1,7 @@
 import axios from 'axios';
+import BASEURL from '../URL_API';
 
-const BASEURL = 'http://localhost:3000';
-
-const DIR = '/doctors';
+const DIRECTION = 'doctors';
 
 const options = {
   headers: {
@@ -19,7 +18,7 @@ const fetch = async (authorization) => {
     },
   };
 
-  const answer = await axios.get(BASEURL + DIR, CurrentUserOptions);
+  const answer = await axios.get(BASEURL + DIRECTION, CurrentUserOptions);
   const doctors = answer.data;
 
   return doctors;

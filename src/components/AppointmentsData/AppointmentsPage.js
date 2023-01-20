@@ -8,7 +8,7 @@ import * as AppointmentsSlice from '../../redux/Appointments/AppointmentsSlice';
 import * as AuthSlice from '../../redux/Auth/AuthSlice';
 import { loadLocalStorage } from '../../redux/localStorage/storage';
 
-function Appointments() {
+const Appointments = () => {
   const appointments = useSelector((store) => store.Appointments);
   const auth = useSelector((store) => store.Auth);
   const dispatch = useDispatch();
@@ -58,20 +58,49 @@ function Appointments() {
 
   return (
     <section className="margin_top">
-      <NavBar name="My Appointments" />
+      <NavBar name="Main Page" />
 
       <h1>All my appointments:</h1>
 
       {appointments.list.map((data) => (
-        <Link key={false} to="/Details" state={{ doc_id: data.id }}>
+        <Link key={data.id} to="/AppointmentDetails" state={{ AppointmentData: data }}>
+          <div className="my_border">
+            <p>
+              ID:
+              {' '}
+              {data.id}
+            </p>
 
-          <p>data</p>
+            <p>
+              ID_doctor:
+              {' '}
+              {data.doctor_id}
+            </p>
+
+            <p>
+              Description:
+              {' '}
+              {data.description}
+            </p>
+
+            <p>
+              Appointment Date:
+              {' '}
+              {data.datetime_of_appointment}
+            </p>
+
+            <p>
+              This appointment was created:
+              {' '}
+              {data.created_at}
+            </p>
+          </div>
 
         </Link>
       ))}
 
     </section>
   );
-}
+};
 
 export default Appointments;

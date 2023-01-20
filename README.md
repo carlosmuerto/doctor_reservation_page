@@ -1,112 +1,107 @@
 <a name="readme-top"></a>
 
-<!--
-HOW TO USE:
-This is an example of how you may give instructions on setting up your project locally.
-
-Modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-After you're finished please remove all the comments and instructions!
--->
-
-<!--<div align="center">
-
-  <br/>
-
-  <h3><b>Microverse README Template</b></h3>
-
-</div>-->
-
-<!-- TABLE OF CONTENTS -->
+<div align="center">
+  <h3><b>Doctor Reservation Capstone Project (FrontEnd)</b></h3>
+  <h4>
+   <a href="https://github.com/carlosmuerto/doctor_reservation_api">
+    Doctor Reservation Capstone Project (BackEnd)
+   </a>
+  </h4>
+  
+</div>
 
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
+  - [📊 Kanban board](#live-demo)
   - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
+  - [Deployment](#deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ](#faq)
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Hello-rails-react FRONT-END] <a name="about-project"></a>
+# 📖 Doctor Reservation Capstone Project (FrontEnd) <a name="about-project"></a>
 
-**[First Set-up with Ruby on Rails]** is a test to put our knowledge into practice by applying and installing the rails framework with react-redux.
-
-<a href="https://github.com/ErikStoupignan/hello-rails-back-end">Click here to see the BACK-END project</a>
+> Describe your project in 1 or 2 sentences.
+**Doctor Reservation Capstone Project (FrontEnd)** is a Implement a connection between a Ruby on Rails back-end and React front-end.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-<!-- > Describe the tech stack and include only the relevant sections that apply to your project. -->
-
 <details>
   <summary>Client</summary>
   <ul>
-    <!-- <li><a href="https://reactjs.org/">React.js</a></li> -->
-    <li><a href="https://rubyonrails.org/">RubyOnRails.rb</a></li>
+    <li><a href="https://react-redux.js.org/">React Redux</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
+    <li><a href="https://expressjs.com/">React</a></li>
   </ul>
 </details>
 
 <details>
 <summary>Database</summary>
   <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+    <li><a href="https://www.postgresql.org/">API/PostgreSQL</a></li>
   </ul>
 </details>
 
-<!-- Features -->
-<!--
-### Key Features <a name="key-features"></a>
+<!-- KANBAN BOARD -->
 
-> Describe between 1-3 key features of the application.
+# 📊 Kanban board <a name="kanban-board"></a>
 
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+<details>
+  <summary>Kanban board link</summary>
+  <ul>
+    <li><a href="https://github.com/users/carlosmuerto/projects/9/views/1">Project</a></li>
+  </ul>
+</details>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+<details>
+  <summary>Initial Kanban board</summary>
+  <div>
+  <img src="./KanbanboardPhotos/Kanban_board_1.png" alt="Kanban_board_1" width="100%"  height="auto" />
+  <img src="./KanbanboardPhotos/Kanban_board_2.png" alt="Kanban_board_1" width="100%"  height="auto" />
+  </div>
+</details>
 
+<details>
+  <summary>Team members</summary>
+    
+  <ul>
+    <li><p>Total: 3 members<p></li>
+  </ul>
+
+  <summary>Names:</summary>
+  <ol>
+    <li>Erik Stoupignan Sánchez Beltrán</li>
+    <li>Carlos Vivas</li>
+    <li>Matias Aguirre</li>
+  </ol>
+</details>
 <!-- LIVE DEMO -->
 
-## 🚀 Live Demo <a name="live-demo"></a>
+# 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link - Not available](https://yourdeployedapplicationlink.com)
+- [Front-End project](https://stately-sunflower-3e9b13.netlify.app/)
+- [Back-End API](https://doctor-reservation-api-k121.onrender.com)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -123,7 +118,9 @@ To get a local copy up and running, follow these steps.
 In order to run this project you need: 
  
  ```sh
- bundle install
+ cmd: 'npm start'
+
+ (If you want to use the program locally between Front End and Back End, you have to change the URL in: './src/redux/URL_API.js'. There you will find a variable called < BASEURL >, just change it.)
 ```
 
 ### Setup
@@ -131,7 +128,7 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-  git clone https://github.com/carlosmuerto/doctor_reservation_page.git
+  git clone 'https://github.com/carlosmuerto/doctor_reservation_page.git'
   cd setup-ror-project
 ```
 
@@ -150,38 +147,24 @@ To run the project, execute the following command:
 
 
 ```sh
-  ./bin/dev or npm start
+  npm start
 ```
 
-<!-- ### Run tests
-
-To run tests, run the following command:
-
-<!--
-Example command:
-
-```sh
-  bin/rails test test/models/article_test.rb
-```
---->
-
-<!-- ### Deployment
+### Deployment
 
 You can deploy this project using:
 
-<!--
-Example:
-
 ```sh
-
+  Netlify
 ```
- -->
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
 
-## 👥 Authors <a name="authors"></a>
+## 👥 Authors 
+<a name="authors"></a>
 
 👤 **Erik Stoupignan Sánchez Beltrán**
 
@@ -189,17 +172,15 @@ Example:
 - Twitter: [@Erik_Stoupignan](https://twitter.com/Erik_Stoupignan)
 - LinkedIn: [Erik Stoupignan Sánchez Beltrán](https://www.linkedin.com/in/erik-sanchez-beltran/)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+👤 **Matias Aguirre**
 
-<!-- FUTURE FEATURES -->
+- GitHub: [@LokurasRlz](https://github.com/LokurasRlz)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/matiaguirre/)
 
-<!-- ## 🔭 Future Features <a name="future-features"></a>
+👤 **Carlos Vivas**
 
-> Describe 1 - 3 features you will add to the project.
-
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- GitHub: [@carlosmuerto](https://github.com/carlosmuerto)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/carlos-vivas-818ab831/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -227,29 +208,11 @@ If you like this project...
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-> Give credit to everyone who inspired your codebase.
+This project was inspired by the design created by [Murat Korkmaz](https://www.behance.net/muratk) that you can find on [Behance](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign).
 
-I would like to thank...
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
-
-<!-- ## ❓ FAQ <a name="faq"></a>
-
-> Add at least 2 questions new developers would ask when they decide to use your project.
-
-- **[Question_1]**
-
-  - [Answer_1]
-
-- **[Question_2]**
-
-  - [Answer_2]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
 
 ## 📝 License <a name="license"></a>
 
