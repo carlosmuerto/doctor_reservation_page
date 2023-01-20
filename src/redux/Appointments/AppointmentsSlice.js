@@ -9,6 +9,7 @@ const ACTION_PREPEND = 'API/Appointments';
 const initialState = {
   loading: loadingStatus.idle,
   list: [],
+  alert: { green: [], red: [] },
 };
 
 const fetch = createAsyncThunk(
@@ -47,11 +48,15 @@ const AppointmentsSlice = createSlice({
       })
       .addCase(Add.fulfilled, (state, action) => {
         state.loading = loadingStatus.succeeded;
+        state.alert.green = ['New appointment created'];
+        state.alert.red = [];
 
         state.list = action.payload;
       })
       .addCase(Add.rejected, (state) => {
         state.loading = loadingStatus.failed;
+        state.alert.green = [];
+        state.alert.red = ['Your request cannot be processed'];
       });
   },
 });
