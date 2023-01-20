@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import loadingStatus from '../../../redux/reduxConst';
 import NavBar from '../../NavBar/Navbar';
 import * as DoctorsSlice from '../../../redux/Doctors/DoctorsSlice';
+import BASEURL from '../../../redux/URL_API';
 
 function Details() {
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ function Details() {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-8 col-sm-2">
-            <img src={`http://localhost:3000/${doctor.photo_dir}`} alt={doctor.name} className="img-fluid" />
+            <img src={`${BASEURL}${doctor.photo_dir}`} alt={doctor.name} className="img-fluid" />
           </div>
           <div className="col-8 col-sm-10">
             <div className="row">

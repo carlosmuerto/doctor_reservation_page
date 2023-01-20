@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import BASEURL from '../../redux/URL_API';
 
 function ItemsList(props) {
   const { data } = props;
@@ -6,7 +7,7 @@ function ItemsList(props) {
     <div className="">
       <p>{data.name}</p>
       <p>{data.specialization}</p>
-      <img src={`http://localhost:3000/${data.photo_dir}`} alt={data.name} className="img_container" />
+      <img src={`${BASEURL}${data.photo_dir}`} alt={data.name} className="img_container" />
     </div>
   );
 }
