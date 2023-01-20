@@ -24,8 +24,24 @@ const fetch = async (authorization) => {
   return doctors;
 };
 
+// Delete Doctor
+const Delete = async (DoctorId, authorization) => {
+  const AuthorizedOptions = {
+    headers: {
+      ...options.headers,
+      authorization,
+    },
+  };
+
+  const res = await axios.delete(`${BASEURL}doctors/${DoctorId}`, AuthorizedOptions);
+
+  const answer = res.data;
+  return answer;
+};
+
 const DoctorsAPI = {
   fetch,
+  Delete,
 };
 
 export default DoctorsAPI;

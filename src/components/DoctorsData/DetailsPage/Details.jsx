@@ -18,6 +18,7 @@ function Details() {
   const auth = useSelector((store) => store.Auth);
   const location = useLocation();
   const { state } = location;
+  const alertFail = useSelector((store) => store.doctors.alert.red);
 
   useEffect(() => {
     if (auth.loading === loadingStatus.succeeded && doctors.loading !== loadingStatus.succeeded) {
@@ -49,6 +50,12 @@ function Details() {
       </section>
     );
   }
+
+  const handledelete = (values) => {
+    dispatch(
+      DoctorsSlice.Delete({ DoctorId: values.doctor.id, user: auth.user }),
+    );
+  };
 
   // eslint-disable-next-line prefer-destructuring
   const doctor = doctors.list.filter((doc) => doc.id === state.doc_id)[0];
@@ -82,10 +89,26 @@ function Details() {
                     </tr>
                   </tbody>
                 </Table>
+                {
+                  auth.user.role === 'admin'
+                    ? (
+                      <div className="col-12">
+                        <input type="button" className="btn btn-danger" onClick={() => handledelete({ doctor })} value="Delete" />
+                      </div>
+                    )
+                    : null
+                }
               </div>
             </Card.Body>
           </Col>
         </Row>
+        {
+          alertFail.map((text) => (
+            <div key={text} className="alert alert-danger text-center container" role="alert">
+              <p>{text}</p>
+            </div>
+          ))
+        }
       </Container>
 
     </>

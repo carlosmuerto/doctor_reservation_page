@@ -12,6 +12,8 @@ import * as DoctorsSlice from '../../redux/Doctors/DoctorsSlice';
 const AddAppointmentsForm = () => {
   const dispatch = useDispatch();
   const auth = useSelector((store) => store.Auth);
+  const alertSucceess = useSelector((store) => store.Appointments.alert.green);
+  const alertFail = useSelector((store) => store.Appointments.alert.red);
   const doctors = useSelector((store) => store.doctors);
 
   useEffect(() => {
@@ -67,6 +69,20 @@ const AddAppointmentsForm = () => {
           <button type="submit" className="container-fluid btn btn-outline-secondary">Submit</button>
         </Form>
       </Formik>
+      {
+          alertSucceess.map((text) => (
+            <div key={text} className="alert alert-success text-center" role="alert">
+              <p key={text}>{text}</p>
+            </div>
+          ))
+        }
+      {
+          alertFail.map((text) => (
+            <div key={text} className="alert alert-danger text-center" role="alert">
+              <p>{text}</p>
+            </div>
+          ))
+        }
     </section>
   );
 };
