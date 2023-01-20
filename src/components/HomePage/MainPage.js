@@ -69,7 +69,6 @@ const MainPage = () => {
     );
   }
 
-
   return (
     <>
 
