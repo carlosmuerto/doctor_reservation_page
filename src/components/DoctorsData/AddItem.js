@@ -10,6 +10,7 @@ import * as DoctorsSlice from '../../redux/Doctors/DoctorsSlice';
 function AddItem() {
   const dispatch = useDispatch();
   const auth = useSelector((store) => store.Auth);
+  const doctors = useSelector((store) => store.doctors);
 
   const onSubmit = async (values) => {
     const data = new FormData();
@@ -65,6 +66,20 @@ function AddItem() {
           </Form>
         )}
       </Formik>
+      {
+        doctors.alertSucceess.map((text) => (
+          <div key={text} className="alert alert-success text-center" role="alert">
+            <p key={text}>{text}</p>
+          </div>
+        ))
+      }
+      {
+        doctors.alertFail.map((text) => (
+          <div key={text} className="alert alert-danger text-center" role="alert">
+            <p>{text}</p>
+          </div>
+        ))
+      }
     </section>
   );
 }
