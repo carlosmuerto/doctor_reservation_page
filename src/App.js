@@ -1,6 +1,6 @@
 import './styles/App.scss';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './components/HomePage/MainPage';
 import Details from './components/DoctorsData/DetailsPage/Details';
 import Appointments from './components/AppointmentsData/AppointmentsPage';
@@ -14,7 +14,7 @@ import AddAppointmentsForm from './components/AppointmentsData/AddAppointment';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/MainPage" exact element={<MainPage />} />
         <Route path="/Details" exact element={<Details />} />
@@ -27,7 +27,7 @@ function App() {
         <Route path="/DeleteItem" exact element={<DeleteItem />} />
         <Route path="/" exact element={<SplashPage />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
