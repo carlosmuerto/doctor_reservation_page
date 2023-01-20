@@ -43,9 +43,10 @@ const AddAppointmentsForm = () => {
         onSubmit={onSubmit}
       >
         <Form className="">
-          <Field name="doctorId" type="number" placeholder="Id del doctor" className="form-control" required />
+          <Field name="doctorId" type="text" placeholder="Nombre del doctor" className="form-control" required />
           <Field name="description" type="text" placeholder="Description" className="form-control" required />
-          <Field name="time" type="date" placeholder="Date of the appointment" className="form-control" required />
+          <Field name="date" type="date" placeholder="Date of the appointment" className="form-control" required />
+          <Field name="time" type="time" placeholder="Time of the appointment" className="form-control" required />
           <button type="submit" className="container-fluid btn btn-outline-secondary">Submit</button>
         </Form>
       </Formik>
