@@ -24,6 +24,13 @@ const Add = createAsyncThunk(
   }) => AppointmentsAPI.AddNew(doctorId, description, time, user.token),
 );
 
+const Delete = createAsyncThunk(
+  `${ACTION_PREPEND}/DELETE`,
+  async ({
+    AppointmentId, user,
+  }) => AppointmentsAPI.Delete(AppointmentId, user.token),
+);
+
 const AppointmentsSlice = createSlice({
   name: ACTION_PREPEND,
   initialState,
@@ -57,6 +64,21 @@ const AppointmentsSlice = createSlice({
         state.loading = loadingStatus.failed;
         state.alert.green = [];
         state.alert.red = ['Your request cannot be processed'];
+      })
+      // Delete appointment
+      .addCase(Delete.pending, (state) => {
+        state.loading = loadingStatus.pending;
+      })
+      .addCase(Delete.fulfilled, (state, action) => {
+        state.loading = loadingStatus.succeeded;
+        state.alert.green = ['New appointment created'];
+        state.alert.red = [];
+        state.list = action.payload;
+      })
+      .addCase(Delete.rejected, (state) => {
+        state.loading = loadingStatus.failed;
+        state.alert.green = [];
+        state.alert.red = ['Your request cannot be processed'];
       });
   },
 });
@@ -67,6 +89,7 @@ export {
   actions,
   fetch,
   Add,
+  Delete,
 };
 
 export default reducer;
