@@ -70,7 +70,7 @@ const NavBar = (props) => {
                   <Nav.Link className="hover_effect ps-2" href="#action2">Add Appointment</Nav.Link>
                   {
                     user.role === 'admin'
-                      ? <Nav.Link className="hover_effect ps-2" href="/AddItem">Add D</Nav.Link>
+                      ? <Nav.Link className="hover_effect ps-2" href="/AddItem">Add Doctor</Nav.Link>
                       : null
                   }
 
