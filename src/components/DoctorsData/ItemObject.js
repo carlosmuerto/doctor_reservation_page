@@ -4,11 +4,16 @@ import BASEURL from '../../redux/URL_API';
 function ItemsList(props) {
   const { data } = props;
   return (
-    <div className="">
-      <p>{data.name}</p>
-      <p>{data.specialization}</p>
-      <img src={`${BASEURL}${data.photo_dir}`} alt={data.name} className="img_container" />
-    </div>
+
+    <>
+      <img src={`${BASEURL}${data.photo_dir}`} alt={data.name} className="doctors_img" />
+      <p className="doctors_name">{data.name}</p>
+      <p className="specialization">
+        {data.specialization}
+        {' '}
+      </p>
+    </>
+
   );
 }
 

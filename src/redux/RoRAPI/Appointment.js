@@ -26,6 +26,7 @@ const fetch = async (authorization) => {
 };
 
 // Add new
+// eslint-disable-next-line no-unused-vars
 const AddNew = async (doctorId, description, time, authorization) => {
   const AuthorizedOptions = {
     headers: {
@@ -44,9 +45,25 @@ const AddNew = async (doctorId, description, time, authorization) => {
   return answer;
 };
 
+// Delete appointment
+const Delete = async (AppointmentId, authorization) => {
+  const AuthorizedOptions = {
+    headers: {
+      ...options.headers,
+      authorization,
+    },
+  };
+
+  const res = await axios.delete(`${BASEURL}appointments/${AppointmentId}`, AuthorizedOptions);
+
+  const answer = res.data;
+  return answer;
+};
+
 const AppointmentsAPI = {
   fetch,
   AddNew,
+  Delete,
 };
 
 export default AppointmentsAPI;
