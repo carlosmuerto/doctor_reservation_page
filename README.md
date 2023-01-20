@@ -15,6 +15,7 @@
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
+  - [📊 Kanban board](#live-demo)
   - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
@@ -61,7 +62,39 @@
   </ul>
 </details>
 
+<!-- KANBAN BOARD -->
 
+# 📊 Kanban board <a name="kanban-board"></a>
+
+<details>
+  <summary>Kanban board link</summary>
+  <ul>
+    <li><a href="https://github.com/users/carlosmuerto/projects/9/views/1">Project</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Initial Kanban board</summary>
+  <div>
+  <img src="./KanbanboardPhotos/Kanban_board_1.png" alt="Kanban_board_1" width="100%"  height="auto" />
+  <img src="./KanbanboardPhotos/Kanban_board_2.png" alt="Kanban_board_1" width="100%"  height="auto" />
+  </div>
+</details>
+
+<details>
+  <summary>Team members</summary>
+    
+  <ul>
+    <li><p>Total: 3 members<p></li>
+  </ul>
+
+  <summary>Names:</summary>
+  <ol>
+    <li>Erik Stoupignan Sánchez Beltrán</li>
+    <li>Carlos Vivas</li>
+    <li>Matias Aguirre</li>
+  </ol>
+</details>
 <!-- LIVE DEMO -->
 
 # 🚀 Live Demo <a name="live-demo"></a>
