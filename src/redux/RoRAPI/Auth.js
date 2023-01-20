@@ -2,8 +2,6 @@
 import axios from 'axios';
 import BASEURL from '../URL_API';
 
-// const BASEURL = 'http://localhost:3000';
-
 const options = {
   headers: {
     accept: 'application/json',
@@ -12,7 +10,7 @@ const options = {
 };
 
 const login = async (email, password) => {
-  const res = await axios.post(`${BASEURL}/login`, {
+  const res = await axios.post(`${BASEURL}login`, {
     user: {
       email,
       password,
@@ -25,7 +23,7 @@ const login = async (email, password) => {
 };
 
 const signup = async (name, email, password) => {
-  const res = await axios.post(`${BASEURL}/signup`, {
+  const res = await axios.post(`${BASEURL}signup`, {
     user: {
       name,
       email,
@@ -47,7 +45,7 @@ const logout = async (authorization) => {
     },
   };
 
-  const res = await axios.delete(`${BASEURL}/logout`, logoutOptions);
+  const res = await axios.delete(`${BASEURL}logout`, logoutOptions);
 
   return res.data;
 };

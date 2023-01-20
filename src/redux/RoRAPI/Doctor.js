@@ -1,8 +1,6 @@
 import axios from 'axios';
 import BASEURL from '../URL_API';
 
-// const BASEURL = 'http://localhost:3000';
-
 const DIRECTION = 'doctors';
 
 const options = {
