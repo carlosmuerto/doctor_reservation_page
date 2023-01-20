@@ -57,7 +57,8 @@ const AddAppointmentsForm = () => {
             ))}
           </Field>
           <Field name="description" type="text" placeholder="Description" className="form-control" required />
-          <Field name="time" type="date" placeholder="Date of the appointment" className="form-control" required />
+          <Field name="date" type="date" placeholder="Date of the appointment" className="form-control" required />
+          <Field name="time" type="time" placeholder="Time of the appointment" className="form-control" required />
           <button type="submit" className="container-fluid btn btn-outline-secondary">Submit</button>
         </Form>
       </Formik>
