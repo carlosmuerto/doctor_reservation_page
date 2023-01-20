@@ -70,19 +70,19 @@ const AddAppointmentsForm = () => {
         </Form>
       </Formik>
       {
-          alertSucceess.map((text) => (
-            <div key={text} className="alert alert-success text-center" role="alert">
-              <p key={text}>{text}</p>
-            </div>
-          ))
-        }
+        alertSucceess.map((text) => (
+          <div key={text} className="alert alert-success text-center" role="alert">
+            <p key={text}>{text}</p>
+          </div>
+        ))
+      }
       {
-          alertFail.map((text) => (
-            <div key={text} className="alert alert-danger text-center" role="alert">
-              <p>{text}</p>
-            </div>
-          ))
-        }
+        alertFail.map((text) => (
+          <div key={text} className="alert alert-danger text-center" role="alert">
+            <p>{text}</p>
+          </div>
+        ))
+      }
     </section>
   );
 };

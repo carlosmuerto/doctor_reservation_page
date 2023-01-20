@@ -78,8 +78,11 @@ const NavBar = (props) => {
                 <Nav className="justify-content-end flex-grow-1">
                   <Nav.Link className="hover_effect ps-2" href="/AppointmentsPage">My Appointments</Nav.Link>
                   <Nav.Link className="hover_effect ps-2" href="/AddAppointmentsForm">Add Appointment</Nav.Link>
-                  <Nav.Link className="hover_effect ps-2" href="/AddItem">Add Item</Nav.Link>
-                  <Nav.Link className="hover_effect ps-2" href="/DeleteItem">Delete Item</Nav.Link>
+                  {
+                    user.role === 'admin'
+                      ? <Nav.Link className="hover_effect ps-2" href="/AddItem">Add Doctor</Nav.Link>
+                      : null
+                  }
 
                   <NavDropdown
                     title="Options"

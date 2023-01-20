@@ -10,6 +10,7 @@ import NavBar from '../../NavBar/Navbar';
 import loadingStatus from '../../../redux/reduxConst';
 import * as DoctorsSlice from '../../../redux/Doctors/DoctorsSlice';
 import './Details.css';
+import BASEURL from '../../../redux/URL_API';
 
 function Details() {
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ function Details() {
         <Row className="d-flex">
           <Col xs={12} md={5}>
             <Card className="mb-4 p-3">
-              <Card.Img variant="top" src={doctor.photo} alt="doctor" />
+              <Card.Img variant="top" src={`${BASEURL}${doctor.photo_dir}`} alt="doctor" />
             </Card>
           </Col>
 

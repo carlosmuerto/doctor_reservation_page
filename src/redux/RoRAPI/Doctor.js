@@ -39,9 +39,33 @@ const Delete = async (DoctorId, authorization) => {
   return answer;
 };
 
+// Add Doctor
+const Add = async (data, authorization) => {
+  const optionsAdd = {
+    headers: {
+      accept: 'application/json',
+    },
+  };
+  const CurrentUserOptions = {
+    headers: {
+      ...optionsAdd.headers,
+      authorization,
+    },
+  };
+
+  const answer = await axios.post(
+    BASEURL + DIRECTION,
+    data,
+    CurrentUserOptions,
+  );
+
+  return answer.data;
+};
+
 const DoctorsAPI = {
   fetch,
   Delete,
+  Add,
 };
 
 export default DoctorsAPI;

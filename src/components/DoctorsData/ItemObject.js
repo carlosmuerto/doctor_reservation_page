@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
+import BASEURL from '../../redux/URL_API';
 
 function ItemsList(props) {
   const { data } = props;
-
   return (
 
     <>
-      <img src={data.photo} alt={data.name} className="doctors_img" />
+      <img src={`${BASEURL}${data.photo_dir}`} alt={data.name} className="doctors_img" />
       <p className="doctors_name">{data.name}</p>
       <p className="specialization">
         {data.specialization}
@@ -21,7 +21,7 @@ ItemsList.propTypes = {
   data: PropTypes.shape({
     name: PropTypes.string,
     specialization: PropTypes.string,
-    photo: PropTypes.string,
+    photo_dir: PropTypes.string,
   }).isRequired,
 };
 
