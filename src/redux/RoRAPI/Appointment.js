@@ -43,7 +43,6 @@ const AddNew = async (doctorId, description, time, authorization) => {
   }, AuthorizedOptions);
 
   const answer = res.data;
-  console.log('res:', res);
   return answer;
 };
 
