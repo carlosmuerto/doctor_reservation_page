@@ -67,14 +67,14 @@ function AddItem() {
         )}
       </Formik>
       {
-        doctors.alertSucceess.map((text) => (
+        doctors.alert.green.map((text) => (
           <div key={text} className="alert alert-success text-center" role="alert">
             <p key={text}>{text}</p>
           </div>
         ))
       }
       {
-        doctors.alertFail.map((text) => (
+        doctors.alert.red.map((text) => (
           <div key={text} className="alert alert-danger text-center" role="alert">
             <p>{text}</p>
           </div>
