@@ -1,0 +1,55 @@
+.offcanvas.show {
+  background: linear-gradient(-15deg, rgba(74, 68, 124, 0.336) 0% 10%, rgb(255, 255, 255) 35%);
+}
+
+.offcanvas-backdrop.show {
+  opacity: 0.3 !important;
+}
+
+.hover_effect:hover {
+  background-color: #97bf10 !important;
+  color: white !important;
+  border-radius: 20px;
+}
+
+.output_hover_effect {
+  background-color: red !important;
+  color: white !important;
+  border-radius: 20px;
+}
+
+.partner_hover_effect:hover {
+  background-color: rgb(14, 145, 53) !important;
+  color: white !important;
+  border-radius: 20px;
+}
+
+.container_links_navbar {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 60%;
+  padding: 4px;
+  opacity: 0.8;
+
+  .icons_navbar {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .icons_navbar:hover {
+    cursor: pointer;
+  }
+
+  .rights_reserved_navbar {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+.swiper {
+  min-width: 200px;
+  width: 50vw;
+  max-width: 500px;
+  min-height: 320px;
+  height: 50vh;
+  max-height: 400px;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.swiper-slide:nth-child(1n) {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(349deg, rgba(34, 193, 195, 1) 0%, rgba(177, 45, 253, 1) 100%);
+}
+
+.swiper-slide:nth-child(2n) {
+  background: rgb(166, 34, 195);
+  background: linear-gradient(67deg, rgba(166, 34, 195, 1) 0%, rgba(253, 93, 45, 1) 100%);
+}
+
+.swiper-slide:nth-child(3n) {
+  background: rgb(170, 195, 34);
+  background: linear-gradient(153deg, rgba(170, 195, 34, 1) 0%, rgba(45, 253, 195, 1) 100%);
+}
+
+.swiper-slide:nth-child(4n) {
+  background: rgb(246, 148, 11);
+  background: linear-gradient(153deg, rgba(246, 148, 11, 1) 0%, rgba(253, 45, 241, 1) 100%);
+}
+
+.swiper-slide:nth-child(5n) {
+  background: rgb(246, 11, 166);
+  background: linear-gradient(266deg, rgb(221, 65, 112) 0%, rgb(80, 240, 80) 100%);
+}
+
+.swiper-slide:nth-child(6n) {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(349deg, rgba(34, 193, 195, 1) 0%, rgba(177, 45, 253, 1) 100%);
+}
+
+.swiper-slide:nth-child(7n) {
+  background: rgb(166, 34, 195);
+  background: linear-gradient(67deg, rgba(166, 34, 195, 1) 0%, rgba(253, 93, 45, 1) 100%);
+}
+
+.swiper-slide:nth-child(8n) {
+  background: rgb(170, 195, 34);
+  background: linear-gradient(153deg, rgba(170, 195, 34, 1) 0%, rgba(45, 253, 195, 1) 100%);
+}
+
+.swiper-slide:nth-child(9n) {
+  background: rgb(246, 148, 11);
+  background: linear-gradient(153deg, rgba(246, 148, 11, 1) 0%, rgba(253, 45, 241, 1) 100%);
+}
+
+.swiper-slide:nth-child(10n) {
+  background: rgb(246, 11, 55);
+  background: linear-gradient(37deg, rgba(246, 11, 55, 1) 0%, rgba(253, 142, 45, 1) 100%);
+}

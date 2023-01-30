@@ -1,0 +1,53 @@
+/* font-family: 'Moon Dance', cursive; */
+
+/* font-family: 'Dancing Script', cursive; */
+
+body {
+  overflow-x: hidden !important;
+}
+
+.my_border {
+  border: 1px solid #000;
+}
+
+.img_container {
+  width: 50px;
+}
+
+.margin_top {
+  margin-top: 70px;
+}
+
+.Splash_container {
+  height: 100vh;
+  width: 100vw;
+  filter: blur(40px);
+  background:
+    radial-gradient(at 18% 99%, rgb(74, 219, 98) 0, transparent 50%) repeat scroll 0% 0%,
+    radial-gradient(at 97% 8%, rgb(118, 249, 168) 0, transparent 50%) repeat scroll 0% 0%,
+    radial-gradient(at 96% 10%, rgb(57, 172, 78) 0, transparent 50%) repeat scroll 0% 0%,
+    radial-gradient(at 42% 20%, rgb(116, 251, 186) 0, transparent 50%) repeat scroll 0% 0%,
+    radial-gradient(at 4% 49%, rgb(44, 200, 106) 0, transparent 50%) repeat scroll 0% 0%,
+    rgba(0, 0, 0, 0) radial-gradient(at 57% 33%, rgb(83, 228, 110) 0, #97bf10 50%) repeat scroll 0% 0%;
+}
+
+.app_title {
+  font-size: 5rem;
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+
+.background_blur {
+  filter: blur(5px);
+}
+
+.card_container {
+  width: 80vw;
+}
+
+a {
+  text-decoration: none !important;
+  color: black !important;
+}
