@@ -37,6 +37,9 @@
 > Describe your project in 1 or 2 sentences.
 **Doctor Reservation Capstone Project (FrontEnd)** is a Implement a connection between a Ruby on Rails back-end and React front-end.
 
+![imagen](https://user-images.githubusercontent.com/34493013/215590770-d6ad296e-6c38-483b-a6d3-5c018b116ce0.png)
+
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
